@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .login-section {
+            text-align: center;
+        }
+
+        .form-label {
+            display: block;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .form-error {
+            color: red;
+        }
+
+        .btn-primary {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            {% include 'nav.html' %}
+        </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="login-container">
+                <div class="container">
+                    <h1>Регистрация</h1>
+                     <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <div class="row gy-4">
+                {% for field in form %}
+                    <p><label class="form-label" for="{{ field.id_for_label }}">{{field.label}}: </label>{{ field }}</p>
+                    <div class="form-error">{{ field.errors }}</div>
+                {% endfor %}
+            </div>
+            <div class="text-center"><button type="submit">Register</button></div>
+                        </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Dietology. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

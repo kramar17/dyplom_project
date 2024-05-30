@@ -1,0 +1,62 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <style>
+        .login-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .login-container {
+            text-align: center;
+        }
+
+        .form-container {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            {% include 'nav.html' %}
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="login-section">
+            <div class="login-container">
+                <h1 class="login-title">Вход</h1>
+                <div class="form-container">
+                    <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="row gy-4">
+                            {% for field in form %}
+                                <p><label class="form-label" for="{{ field.id_for_label }}">{{field.label}}: </label>{{ field }}</p>
+                                <div class="form-error">{{ field.errors }}</div>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Вход</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p>&copy; 2024 YourCompany. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

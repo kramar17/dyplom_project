@@ -1,0 +1,20 @@
+{% load static %}
+
+<a href="{% url 'index' %}" class="company-name header__company-name">Dietologonline</a>
+    <nav class="menu header__menu">
+        <ul class="menu__list header__menu-list">
+            <li class="menu__item"><a href="#section-problems" class="menu__link">Почему мы?</a></li>
+            <li class="menu__item"><a href="#section-describe" class="menu__link">Как это работает?</a></li>
+            <li class="menu__item"><a href="#section-subscriptions" class="menu__link">Стоимость</a></li>
+            <li class="menu__item"><a href="#section-eating" class="menu__link">Преимущества</a></li>
+            <li class="menu__item"><a href="#section-ask" class="menu__link">Спросите нас</a></li>
+            <li class="menu__item"><a href="#/" class="btn header-btn header-btn_burger">Выбрать диетолога</a></li>
+        </ul>
+ 
+          {% if user.is_authenticated %}
+            <li class="menu__item"><a href="{% url 'logout' %}" class="menu__link header__logout">Вихід</a></li>
+        {% else %}
+            <li class="menu__item"><a href="{% url 'login' %}" class="menu__link header__login">Вхід</a></li>
+        {% endif %}
+        
+</nav>
