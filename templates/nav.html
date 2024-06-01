@@ -3,11 +3,11 @@
 <a href="{% url 'index' %}" class="company-name header__company-name">Dietologonline</a>
 <nav class="menu header__menu">
     <ul class="menu__list header__menu-list">
-        <li class="menu__item"><a href="#section-problems" class="menu__link">Почему мы?</a></li>
-        <li class="menu__item"><a href="#section-describe" class="menu__link">Как это работает?</a></li>
-        <li class="menu__item"><a href="#section-subscriptions" class="menu__link">Стоимость</a></li>
-        <li class="menu__item"><a href="#section-eating" class="menu__link">Преимущества</a></li>
-        <li class="menu__item"><a href="#section-ask" class="menu__link">Спросите нас</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-problems{% else %}#section-problems{% endif %}" class="menu__link">Почему мы?</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-describe{% else %}#section-describe{% endif %}" class="menu__link">Как это работает?</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-subscriptions{% else %}#section-subscriptions{% endif %}" class="menu__link">Стоимость</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-eating{% else %}#section-eating{% endif %}" class="menu__link">Преимущества</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-ask{% else %}#section-ask{% endif %}" class="menu__link">Спросите нас</a></li>
         <li class="menu__item"><a href="#/" class="btn header-btn header-btn_burger">Выбрать диетолога</a></li>
     
     </ul>
@@ -21,6 +21,7 @@
         {% endif %}
     </ul>
 </nav>
+
 
 <style>
     .header__menu {
