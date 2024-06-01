@@ -23,14 +23,31 @@
         .form-container {
             text-align: left;
         }
+
+        .registration-link {
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        .registration-link a {
+            color: blue;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header__container">
-            {% include 'nav.html' %}
+          {% include 'nav.html' %}
+          <a href="#/" class="btn header-btn">Выбрать диетолога</a>
+          <div class="burger">
+            <button id="burger__toggle">
+                <span class="burger__line"></span>
+            </button>
+          </div>
         </div>
-    </header>
+      </header>
 
     <main class="main">
         <section class="login-section">
@@ -48,6 +65,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Вход</button>
                     </form>
+                    <p class="registration-link">ще не маєте аккаунту? <a href="{% url 'register' %}">Реєстрація</a></p>
                 </div>
             </div>
         </section>

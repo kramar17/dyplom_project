@@ -1,0 +1,121 @@
+.overlay{
+  display: none;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  &_visible{
+    display: block;
+  }
+}
+.page__modal{
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: -100%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease;
+}
+.modal{
+  max-width: 30rem;
+  width: calc(100% - 1rem);
+  background: white;
+  padding: 2em;
+  border-radius: 1em;
+
+  &__title{
+    position: relative;
+    text-align: center;
+    padding-bottom: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.875rem;
+    &::after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 4px;
+      width: 10rem;
+      border-radius: 2px;
+      background-color: #2ecc71;
+    }
+  }
+  &__input{
+    font-family: 'Inter', sans-serif;
+    border-radius: 0.5em;
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    color: #414141;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 22px;
+    transition: .3s;
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    &:focus{
+      border: 2px solid #2ecc71;
+      background-color: #fff;
+    }
+  }
+  &__textarea{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 0.5em;
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    color: #414141;
+    padding: 0.5rem 1rem;
+    margin-bottom: 22px;
+    transition: .3s;
+    min-height: 150px;
+    resize: none;
+    &:focus{
+      border: 2px solid #2ecc71;
+      background-color: #fff;
+    }
+  }
+  &__btn{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #2ecc71;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 0.5em;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+    &:hover{
+      background-color: #27ae60;
+    }
+  }
+  &__close-icon{
+    display: block;
+    position: absolute;
+    right:0.5rem;
+    top: 0.5rem;
+    z-index: 20;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.05) translateZ(0);
+    }
+  }
+  &_visible{
+    left: 50%;
+  }
+}
+

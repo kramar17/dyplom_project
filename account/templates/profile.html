@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+  <title>DIETOLOGONLINE - Профиль</title>
+</head>
+<body class="page">
+  <header class="header">
+    <div class="header__container">
+      {% include 'nav.html' %}
+      <a href="#/" class="btn header-btn">Выбрать диетолога</a>
+      <div class="burger">
+        <button id="burger__toggle">
+            <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container profile-container">
+    <h1>Профиль пользователя</h1>
+    <p>Имя: {{ user.first_name }}</p>
+    <p>Фамилия: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Телефон: {{ user.username }}</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <a href="#/" class="company-name footer__company-name">Dietologonline</a>
+      <nav class="menu footer__menu">
+        <ul class="menu__list footer__list">
+          <li class="menu__list-item"><a href="#section-problems" class="menu__link">Почему мы</a></li>
+          <li class="menu__list-item"><a href="#section-describe" class="menu__link">Как это работает</a></li>
+          <li class="menu__list-item"><a href="#section-subscriptions" class="menu__link">Стоимость</a></li>
+          <li class="menu__list-item"><a href="#section-eating" class="menu__link">Преимущества</a></li>
+          <li class="menu__list-item"><a href="#section-ask" section-class="menu__link">Спросите нас</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/imask"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

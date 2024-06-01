@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
 from django.contrib.auth import logout, authenticate, login
 from account.forms import LoginForm
-from account.models import RegisterForm
+from account.forms import RegisterForm
 
 
 class RegisterView(CreateView):
@@ -37,3 +38,8 @@ class MyLoginView(FormView):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+@login_required
+def profile_view(request):
+    user = request.user
+    return render(request, 'profile.html', {'user': user})
