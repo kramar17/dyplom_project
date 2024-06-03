@@ -8,12 +8,46 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
-    <style>
+
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+          {% include 'nav.html' %}
+          <div class="burger">
+            <button id="burger__toggle">
+                <span class="burger__line"></span>
+            </button>
+          </div>
+    </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="login-container">
+                <div class="container">
+                    <h1>Реєстрація</h1>
+                     <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <div class="row gy-4">
+                {% for field in form %}
+                    <p><label class="form-label" for="{{ field.id_for_label }}">{{field.label}}: </label>{{ field }}</p>
+                    <div class="form-error">{{ field.errors }}</div>
+                {% endfor %}
+            </div>
+            <div class="text-center"><button type="submit">Зареєструватися</button></div>
+                        </form>
+                </div>
+            </div>
+        </section>
+    </main>
+<style>
         .login-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 50vh;
+            height: 80vh;
         }
 
         .login-section {
@@ -47,41 +81,6 @@
             background-color: darkblue;
         }
     </style>
-</head>
-<body>
-    <header class="header">
-        <div class="header__container">
-          {% include 'nav.html' %}
-          <a href="#/" class="btn header-btn">Выбрать диетолога</a>
-          <div class="burger">
-            <button id="burger__toggle">
-                <span class="burger__line"></span>
-            </button>
-          </div>
-    </div>
-    </header>
-
-    <main>
-        <section class="login-section">
-            <div class="login-container">
-                <div class="container">
-                    <h1>Регистрация</h1>
-                     <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-            {% csrf_token %}
-            <div class="form-error">{{ form.non_field_errors }}</div>
-            <div class="row gy-4">
-                {% for field in form %}
-                    <p><label class="form-label" for="{{ field.id_for_label }}">{{field.label}}: </label>{{ field }}</p>
-                    <div class="form-error">{{ field.errors }}</div>
-                {% endfor %}
-            </div>
-            <div class="text-center"><button type="submit">Register</button></div>
-                        </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
     <footer>
         <div class="container">
             <p>© 2023 Dietology. Все права защищены.</p>

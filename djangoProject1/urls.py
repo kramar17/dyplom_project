@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from main.views import main_page
+from main.views import main_page, callback_view
 from account.views import RegisterView, MyLoginView, logout_view, profile_view
 
 
@@ -11,5 +11,6 @@ urlpatterns = [
     path('login/', MyLoginView.as_view(), name='login'),
     path('logout/', logout_view, name='logout'),
     path('profile/', profile_view, name='profile'),
+    path('callback/', callback_view, name='callback')
 
 ]

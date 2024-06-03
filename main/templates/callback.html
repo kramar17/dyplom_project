@@ -1,58 +1,38 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Резервація дзвінка</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <style>
-        .login-section {
+        .callback-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 50vh;
+            height: 80vh;
         }
 
-        .login-container {
+        .callback-section {
             text-align: center;
-        }
-
-        .form-container {
-            text-align: left;
-        }
-
-        .registration-link {
-            margin-top: 10px;
-            display: block;
-            text-align: center;
-        }
-
-        .registration-link a {
-            color: blue;
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header__container">
-          {% include 'nav.html' %}
-          <div class="burger">
-            <button id="burger__toggle">
-                <span class="burger__line"></span>
-            </button>
-          </div>
+            {% include 'nav.html' %}
         </div>
-      </header>
+    </header>
 
-    <main class="main">
-        <section class="login-section">
-            <div class="login-container">
-                <h1 class="login-title">Вход</h1>
-                <div class="form-container">
+    <main>
+        <section class="callback-section">
+            <div class="callback-container">
+                <div class="container">
+                    <h1>Резервація дзвінка</h1>
                     <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
                         {% csrf_token %}
                         {{ form.non_field_errors }}
@@ -62,17 +42,16 @@
                                 <div class="form-error">{{ field.errors }}</div>
                             {% endfor %}
                         </div>
-                        <button type="submit" class="btn btn-primary">Вход</button>
+                        <button type="submit" class="btn btn-primary">Зарезервувати</button>
                     </form>
-                    <p class="registration-link">ще не маєте аккаунту? <a href="{% url 'register' %}">Реєстрація</a></p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer__container">
-            <p>&copy; 2024 YourCompany. Все права защищены.</p>
+    <footer>
+        <div class="container">
+            <p>© 2023 Dietology. Все права захищені.</p>
         </div>
     </footer>
 </body>
