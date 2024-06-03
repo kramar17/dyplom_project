@@ -18,14 +18,14 @@
                 <span class="burger__line"></span>
             </button>
           </div>
-    </div>
+        </div>
     </header>
 
     <main>
         <section class="login-section">
             <div class="login-container">
                 <div class="container">
-                    <h1>Реєстрація</h1>
+                    <h1 style="font-size: 1.5rem;">Реєстрація</h1>
                      <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
             {% csrf_token %}
             <div class="form-error">{{ form.non_field_errors }}</div>
@@ -41,45 +41,7 @@
             </div>
         </section>
     </main>
-<style>
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-        }
 
-        .login-section {
-            text-align: center;
-        }
-
-        .form-label {
-            display: block;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
-
-        .form-error {
-            color: red;
-        }
-
-        .btn-primary {
-            background-color: blue;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background-color: darkblue;
-        }
-    </style>
     <footer>
         <div class="container">
             <p>© 2023 Dietology. Все права защищены.</p>
@@ -87,3 +49,51 @@
     </footer>
 </body>
 </html>
+
+<style>
+    .login-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .login-container {
+        text-align: center;
+    }
+
+    .container {
+        text-align: left;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    .form-error {
+        color: red;
+        margin-top: 5px;
+    }
+
+    button[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: darkblue;
+    }
+</style>

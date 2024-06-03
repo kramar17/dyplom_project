@@ -13,7 +13,6 @@ def main_page(request):
     consultation_about_sport = 'Консультації по спортивному харчуванню'
     free_week_for_family = 'Безкоштовний тиждень для друга, чи члена вашої сім`ї'
     warranty_reminder = '*5-днівна гарантія повернення коштів включена в усі плани'
-    site_name = 'DIETOLOGONLINE'
 
     context = {
         'offers': offers,
@@ -24,9 +23,6 @@ def main_page(request):
         'consultation_about_sport': consultation_about_sport,
         'free_week_for_family': free_week_for_family,
         'warranty_reminder': warranty_reminder,
-        'site_name': site_name,
-
-
     }
 
     return render(request, 'index.html', context)

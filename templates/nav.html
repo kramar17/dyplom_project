@@ -1,6 +1,6 @@
 {% load static %}
 <div class="header__container">
-<a href="{% url 'index' %}" class="company-name header__company-name">Dietologonline</a>
+<a href="{% url 'index' %}" class="company-name header__company-name">{{ site_name }}</a>
 <nav class="menu header__menu">
     <ul class="menu__list header__menu-list">
         <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-problems{% else %}#section-problems{% endif %}" class="menu__link">Почему мы?</a></li>

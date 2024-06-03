@@ -38,6 +38,30 @@ class UserDiscount(models.Model):
     discount = models.ForeignKey(DiscountModel, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.discount.name if self.discount else 'No Discount'}"
+        return f"{self.user.username} - {self.discount.name if self.discount else 'Немає Знижки'}"
+
+
+class DietitianClient(models.Model):
+    dietitian = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='Дієтологи',
+        limit_choices_to={'is_staff': True}
+    )
+    client = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='Клієнти',
+        limit_choices_to={'is_staff': False}
+    )
+
+    def __str__(self):
+        return f'{self.dietitian.username} - {self.client.username}'
+
+    class Meta:
+        verbose_name = "Клієнт дієтолога"
+        verbose_name_plural = "Клієнти дієтологів"
+
+
 
 

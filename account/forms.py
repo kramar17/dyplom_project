@@ -2,17 +2,16 @@ import re
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.contrib.auth import authenticate
 
 
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'}),
-        label='Пароль'
+        label='Password'
     )
     password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Підтвердження паролю'}),
-        label='Підтвердження паролю'
+        label='Confirm Password'
     )
 
     class Meta:

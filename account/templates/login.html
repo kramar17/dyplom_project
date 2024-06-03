@@ -1,10 +1,10 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вхід</title>
+    <title>Вход</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
@@ -20,7 +20,7 @@
             </button>
           </div>
         </div>
-      </header>
+    </header>
 
     <main class="main">
         <section class="login-section">
@@ -38,13 +38,21 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Вход</button>
                     </form>
-                    <p class="registration-link">ще не маєте аккаунту? <a href="{% url 'register' %}">Реєстрація</a></p>
+                    <p class="registration-link">Ще не маєте аккаунту? <a href="{% url 'register' %}">Реєстрація</a></p>
                 </div>
             </div>
         </section>
     </main>
 
-    <style>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p>&copy; 2024 YourCompany. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
+   <style>
         .login-section {
             display: flex;
             justify-content: center;
@@ -71,11 +79,3 @@
             text-decoration: underline;
         }
     </style>
-
-    <footer class="footer">
-        <div class="footer__container">
-            <p>&copy; 2024 YourCompany. Все права защищены.</p>
-        </div>
-    </footer>
-</body>
-</html>
