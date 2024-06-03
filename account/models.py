@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -25,14 +26,16 @@ class OfferModel(models.Model):
 
 
 class DiscountModel(models.Model):
-    name = models.CharField(max_length=100)
-    counter_of_invites = models.IntegerField()
-    percent = models.IntegerField()
+    name = models.CharField(max_length=255)
+    percentage = models.FloatField()
+
+    def __str__(self):
+        return f"{self.name} ({self.percentage}%)"
 
 
 class UserDiscount(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    discount = models.ForeignKey(Discount, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    discount = models.ForeignKey(DiscountModel, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f"{self.user.username} - {self.discount.name if self.discount else 'No Discount'}"

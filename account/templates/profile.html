@@ -1,5 +1,4 @@
-{% load static %}
-
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +27,32 @@
     <p>Фамилия: {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Телефон: {{ user.username }}</p>
+    {% if user.userdiscount %}
+      <p>Ваша знижка: {{ user.userdiscount.discount.name }} ({{ user.userdiscount.discount.percentage }}%)</p>
+    {% else %}
+      <p>У вас немає знижки</p>
+      <p>Приводьте друзів, щоб отримати знижку</p>
+    {% endif %}
+    <h2>Тарифы:</h2>
+    <ul>
+      {% for offer in offers %}
+        <li>{{ offer.name }}:
+          {% if monthly_payment %}
+            {% if user.userdiscount %}
+              {{ offer.discounted_price }} грн (зі знижкою)
+            {% else %}
+              {{ offer.price }} грн
+            {% endif %}
+          {% else %}
+            {{ offer.price }} грн
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% if not monthly_payment %}
+
+      <p>Приводьте друзів, щоб отримати знижку</p>
+    {% endif %}
   </div>
 
   <footer class="footer">
@@ -49,3 +74,4 @@
   <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
+

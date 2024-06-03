@@ -6,6 +6,7 @@ from django.views.generic import CreateView, FormView
 from django.contrib.auth import logout, authenticate, login
 from account.forms import LoginForm
 from account.forms import RegisterForm
+from account.models import OfferModel, UserDiscount
 
 
 class RegisterView(CreateView):
@@ -39,7 +40,20 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
+
 @login_required
 def profile_view(request):
     user = request.user
-    return render(request, 'profile.html', {'user': user})
+    offers = OfferModel.objects.all()
+    monthly_payment = None
+
+    user_discounts = UserDiscount.objects.filter(user=user)
+    if user_discounts.exists():
+        for offer in offers:
+            user_discount = user_discounts.first()
+            offer.discounted_price = offer.price * (1 - user_discount.discount.percentage / 100)
+        monthly_payment = sum(offer.discounted_price for offer in offers)
+    else:
+        monthly_payment = None
+
+    return render(request, 'profile.html', {'user': user, 'offers': offers, 'monthly_payment': monthly_payment})
