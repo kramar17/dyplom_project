@@ -55,6 +55,8 @@ class DietitianClient(models.Model):
         limit_choices_to={'is_staff': False}
     )
 
+    recommendation = models.TextField(blank=True, null=True)
+
     def __str__(self):
         return f'{self.dietitian.username} - {self.client.username}'
 

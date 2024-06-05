@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+  <title>DIETOLOGONLINE - Профіль</title>
+</head>
+<body class="page">
+  <header class="header">
+    <div class="header__container">
+      {% include 'nav.html' %}
+      <div class="burger">
+        <button id="burger__toggle">
+            <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container profile-container">
+    <h1>Профіль користувача</h1>
+    <p>Імя`я: {{ client.client.first_name }}</p>
+    <p>Призвище: {{ client.client.last_name }}</p>
+    <p>Email: {{ client.client.email }}</p>
+    <p>Телефон: {{ client.client.username }}</p>
+
+    <h2>Рекомендація:</h2>
+    <form method="post" class="centered-form">
+      {% csrf_token %}
+
+      <textarea name="recommendation" class="form-input" placeholder="Уведіть рекомендацію">
+        {% if client.recommendation %}
+            {{ client.recommendation }}
+        {% endif %}
+      </textarea>
+      <button type="submit" class="form-button">Зберегти</button>
+    </form>
+  </div>
+<footer>
+        <div class="footer-container">
+            <p>{{ footer_text }}</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+<style>
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.centered-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-input {
+  width: 400px; /* или другое значение по вашему усмотрению */
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-button {
+  width: 150px; /* или другое значение по вашему усмотрению */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f9f9f9;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>

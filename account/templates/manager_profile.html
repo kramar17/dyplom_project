@@ -1,0 +1,39 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+  <title>DIETOLOGONLINE - Профіль</title>
+</head>
+<body class="page">
+  <header class="header">
+    <div class="header__container">
+      {% include 'nav.html' %}
+      <div class="burger">
+        <button id="burger__toggle">
+            <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <div class="container profile-container">
+    <h1>Профіль менеджера</h1>
+    <h1>{{ manager_first_name  }} {{ manager_last_name }}</h1>
+    <h2>Список клієнтів:</h2>
+    <ul>
+      {% for client in clients %}
+          <li><a href="{% url 'client_profile' client.id %}">
+          {{ client.client.first_name }} {{ client.client.last_name }} {{ client.client.username }} </a></li>
+
+      {% endfor %}
+    </ul>
+  </div>
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+

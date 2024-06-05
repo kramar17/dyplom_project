@@ -4,19 +4,26 @@
     <div class="container section-eating__container">
 <img class="section-eating__img" src="{% static 'images/icons/Healthy-lifestyle-cuate-1.svg' %}" alt="Eating boy">
         <div class="section-eating__info">
-            <h2 class="section-eating__title">Общей диеты не существует</h2>
-            <p class="section-eating__text">При занятиях бегом очень важно что, сколько и когда вы едите. Общей диеты нет – рацион должен учитывать индивидуальные особенности организма, скорость метаболизма, программу тренировок. Очень важна профессиональная помощь диетолога, который разработает для вас специальную диету для тренировок.</p>
-            <a href="#/" class="section-eating__btn">Выбрать диетолога</a>
+            <h2 class="section-eating__title">Загальної дієти не існує</h2>
+            <p class="section-eating__text">При заняттях бігом дуже важливо, що, скільки і коли ви їсте. Загальної дієти
+                немає – раціон повинен враховувати індивідуальні особливості організму, швидкість метаболізму, програму 
+                тренувань. Дуже важливою є професійна допомога дієтолога, який розробить для вас спеціальну дієту.
+                для тренувань.</p>
+            <a href="{% url 'callback' %}" class="section-eating__btn">Обрати дієтолога</a>
         </div>
         <div class="section-eating__card">
             <img class="section-eating__card-img" src="{% static 'images/icons/energy.svg' %}" alt="">
-            <h3 class="section-eating__card-title">Энергия для организма</h3>
-            <p class="section-eating__card-text">Важно насытить организм перед началом тренировки, оптимально – сложными углеводами, дающими энергию длительное время. Иначе вы можете потерять сознание, травмироваться или даже впасть в гликогикемическую кому.</p>
+            <h3 class="section-eating__card-title">Енергія для організму</h3>
+            <p class="section-eating__card-text">Важливо наситити організм перед початком тренування, оптимально складними
+                вуглеводами, що дають енергію тривалий час. Інакше ви можете знепритомніти, травмуватися або навіть
+                впасти в глікогікемічну кому.</p>
         </div>
         <div class="section-eating__card">
             <img class="section-eating__card-img" src="{% static 'images/icons/danger.svg' %}" alt="">
-            <h3 class="section-eating__card-title">Опасность во время тренировок</h3>
-            <p class="section-eating__card-text">Если перед тренировкой вы переели, уже с первыми шагами тело не справляется с двойной нагрузкой – перевариванием пищи, процессами метаболизма и собственно физической активностью. Начинает болеть в левом и правом боках – это печень и селезенка, страдающие чрезмерной работой.</p>
+            <h3 class="section-eating__card-title">Небезпека під час тренувань</h3>
+            <p class="section-eating__card-text">Якщо перед тренуванням ви переїли, вже з першими кроками тіло не 
+                може впоратись з подвійним навантаженням – перетравленням їжі, процесами метаболізму та власне фізичною 
+                активністю. Починає боліти в лівому та правому боках – це печінка та селезінка, які страждають від надмірної роботи.</p>
         </div>
     </div>
 </section>
@@ -24,9 +31,10 @@
     <div class="container container-flex">
         <img class="section-ask__img container-flex__img" src="{% static 'images/character-with-phone.svg' %}" alt="Eating boy">
         <div class="section-ask__info container-flex__info">
-            <h2>Узнайте больше</h2>
-            <p class="section-result__text container-flex__text">Все еще есть вопросы? Мы будем рады ответить на них в любое удобное для Вас время.</p>
-            <a href="#/" class="btn">Спросите нас</a>
+            <h2>Дізнайтесь більше</h2>
+            <p class="section-result__text container-flex__text">Досі є питання? Ми будемо раді відповісти на них у 
+                будь-який зручний для Вас час.</p>
+            <a href="{% url 'callback' %}" class="btn">Запитайте нас</a>
         </div>
     </div>
 </section>

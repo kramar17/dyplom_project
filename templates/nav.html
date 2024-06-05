@@ -3,23 +3,27 @@
 <a href="{% url 'index' %}" class="company-name header__company-name">{{ site_name }}</a>
 <nav class="menu header__menu">
     <ul class="menu__list header__menu-list">
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-problems{% else %}#section-problems{% endif %}" class="menu__link">Почему мы?</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-describe{% else %}#section-describe{% endif %}" class="menu__link">Как это работает?</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-subscriptions{% else %}#section-subscriptions{% endif %}" class="menu__link">Стоимость</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-eating{% else %}#section-eating{% endif %}" class="menu__link">Преимущества</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-ask{% else %}#section-ask{% endif %}" class="menu__link">Спросите нас</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-problems{% else %}#section-problems{% endif %}" class="menu__link">Чому ми?</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-describe{% else %}#section-describe{% endif %}" class="menu__link">Як це працює?</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-subscriptions{% else %}#section-subscriptions{% endif %}" class="menu__link">Вартість</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-eating{% else %}#section-eating{% endif %}" class="menu__link">Переваги</a></li>
+        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-ask{% else %}#section-ask{% endif %}" class="menu__link">Запитайте нас</a></li>
         <a href="{% url 'callback' %}" class="btn header-btn">Замовити дзвінок</a>
     </ul>
 
     <ul class="menu__list header__menu-list header__menu-list--auth">
-        {% if user.is_authenticated %}
-            <li class="menu__item"><a href="{% url 'profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
-            <li class="menu__item"><a href="{% url 'logout' %}" class="menu__link header__logout">Вихід</a></li>
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+            <li class="menu__item"><a href="{% url 'manager_profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
         {% else %}
-            <li class="menu__item"><a href="{% url 'login' %}" class="menu__link header__login">Вхід</a></li>
-            <li class="menu__item"><a href="{% url 'register' %}" class="menu__link header__register">Реєстрація</a></li>
+            <li class="menu__item"><a href="{% url 'profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
         {% endif %}
-    </ul>
+        <li class="menu__item"><a href="{% url 'logout' %}" class="menu__link header__logout">Вийти</a></li>
+    {% else %}
+        <li class="menu__item"><a href="{% url 'login' %}" class="menu__link header__login">Вхід</a></li>
+        <li class="menu__item"><a href="{% url 'register' %}" class="menu__link header__register">Реєстрація</a></li>
+    {% endif %}
+</ul>
 
 </nav>
 </div>

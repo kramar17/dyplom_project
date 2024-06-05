@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-  <title>DIETOLOGONLINE - Профиль</title>
+  <title>DIETOLOGONLINE - Профіль</title>
 </head>
 <body class="page">
   <header class="header">
@@ -22,9 +22,9 @@
   </header>
 
   <div class="container profile-container">
-    <h1>Профиль пользователя</h1>
-    <p>Имя: {{ user.first_name }}</p>
-    <p>Фамилия: {{ user.last_name }}</p>
+    <h1>Профіль користувача</h1>
+    <p>Ім`я: {{ user.first_name }}</p>
+    <p>Призвище: {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Телефон: {{ user.username }}</p>
     {% if user.userdiscount %}
@@ -33,7 +33,7 @@
       <p>У вас немає знижки</p>
       <p>Приводьте друзів, щоб отримати знижку</p>
     {% endif %}
-    <h2>Тарифы:</h2>
+    <h2>Тарифи:</h2>
     <ul>
       {% for offer in offers %}
         <li>{{ offer.name }}:
@@ -50,28 +50,31 @@
       {% endfor %}
     </ul>
     {% if not monthly_payment %}
-
       <p>Приводьте друзів, щоб отримати знижку</p>
     {% endif %}
+    <h2>Рекомендація:</h2>
+    <p>{{ recommendation }}</p>
   </div>
 
-  <footer class="footer">
-    <div class="container footer__container">
-      <a href="#/" class="company-name footer__company-name">Dietologonline</a>
-      <nav class="menu footer__menu">
-        <ul class="menu__list footer__list">
-          <li class="menu__list-item"><a href="#section-problems" class="menu__link">Почему мы</a></li>
-          <li class="menu__list-item"><a href="#section-describe" class="menu__link">Как это работает</a></li>
-          <li class="menu__list-item"><a href="#section-subscriptions" class="menu__link">Стоимость</a></li>
-          <li class="menu__list-item"><a href="#section-eating" class="menu__link">Преимущества</a></li>
-          <li class="menu__list-item"><a href="#section-ask" section-class="menu__link">Спросите нас</a></li>
-        </ul>
-      </nav>
+  <footer>
+    <div class="footer-container">
+      <p>{{ footer_text }}</p>
     </div>
   </footer>
 
-  <script src="https://unpkg.com/imask"></script>
   <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
+<style>
+   footer {
+        text-align: center;
+        padding: 20px 0;
+        background-color: #f9f9f9;
+    }
 
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

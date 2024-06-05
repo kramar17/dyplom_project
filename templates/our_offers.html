@@ -2,7 +2,7 @@
 {% load static %}
  <section class="section-subscriptions" id="section-subscriptions">
   <div class="container">
-    <h2>Выбрать персонального онлайн специалиста</h2>
+    <h2>Обрати персонального онлайн фахівця</h2>
     <div class="section-subscriptions__container">
         {% for offer in offers %}
             <div class="subscription">
@@ -51,7 +51,7 @@
             {% endif %}
           
           </ul>
-          <a href="#/" class="btn">Выбрать</a>
+          <a href="{% url 'callback' %}" class="btn">Выбрать</a>
         </div>
       </div>
         {% endfor %}

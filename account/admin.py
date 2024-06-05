@@ -24,13 +24,18 @@ class UserDiscountInline(admin.TabularInline):
 
 
 class CustomUserAdmin(BaseUserAdmin):
+    inlines = (UserDiscountInline,)
     list_display = ('username', 'first_name', 'last_name', 'has_discount', 'discount_percentage', 'is_staff')
 
     def has_discount(self, obj):
-        return obj.userdiscount.discount.name if hasattr(obj, 'userdiscount') and obj.userdiscount.discount else 'No Discount'
+        if hasattr(obj, 'userdiscount') and obj.userdiscount and obj.userdiscount.discount:
+            return obj.userdiscount.discount.name
+        return 'No Discount'
 
     def discount_percentage(self, obj):
-        return obj.userdiscount.discount.percentage if hasattr(obj, 'userdiscount') and obj.userdiscount.discount else ''
+        if hasattr(obj, 'userdiscount') and obj.userdiscount and obj.userdiscount.discount:
+            return obj.userdiscount.discount.percentage
+        return ''
 
     has_discount.short_description = 'Discount'
     discount_percentage.short_description = 'Discount Percentage'
@@ -52,7 +57,6 @@ class DietitianClientAdmin(admin.ModelAdmin):
     def client_username(self, obj):
         return obj.client.username
     client_username.short_description = 'Client Username'
-
 
 
 admin.site.unregister(User)

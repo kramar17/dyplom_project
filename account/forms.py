@@ -48,8 +48,9 @@ class RegisterForm(forms.ModelForm):
     def clean_username(self):
         username = self.cleaned_data['username']
 
+        username = username.replace(' ', '')
         if not re.match(r'^(\+?380|0)\d{9}$', username):
-            raise ValidationError('Неверный формат номера телефона.')
+            raise ValidationError('Невірний формат номеру телефону.')
         if username.startswith('+380'):
             username = '0' + username[4:]
         elif username.startswith('380'):
@@ -73,7 +74,7 @@ class RegisterForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер телефона'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер телефону'})
     )
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'})

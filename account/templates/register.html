@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация</title>
+    <title>Реєстрація</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
@@ -43,8 +43,8 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2023 Dietology. Все права защищены.</p>
+        <div class="footer-container">
+            <p>{{ footer_text }}</p>
         </div>
     </footer>
 </body>
@@ -95,5 +95,16 @@
 
     button[type="submit"]:hover {
         background-color: darkblue;
+    }
+    footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f9f9f9;
+        }
+
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

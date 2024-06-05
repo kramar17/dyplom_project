@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход</title>
+    <title>Вхід</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
@@ -36,7 +36,7 @@
                                 <div class="form-error">{{ field.errors }}</div>
                             {% endfor %}
                         </div>
-                        <button type="submit" class="btn btn-primary">Вход</button>
+                        <button type="submit" class="btn btn-primary">Вхід</button>
                     </form>
                     <p class="registration-link">Ще не маєте аккаунту? <a href="{% url 'register' %}">Реєстрація</a></p>
                 </div>
@@ -45,9 +45,9 @@
     </main>
 
 
-    <footer class="footer">
-        <div class="footer__container">
-            <p>&copy; 2024 YourCompany. Все права защищены.</p>
+    <footer>
+        <div class="footer-container">
+            <p>{{ footer_text }}</p>
         </div>
     </footer>
 </body>
@@ -77,5 +77,16 @@
         .registration-link a {
             color: blue;
             text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f9f9f9;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>

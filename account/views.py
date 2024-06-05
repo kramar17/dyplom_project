@@ -1,12 +1,13 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
 from django.contrib.auth import logout, authenticate, login
 from account.forms import LoginForm
 from account.forms import RegisterForm
-from account.models import OfferModel, UserDiscount
+from account.models import OfferModel, UserDiscount, DietitianClient
 
 
 class RegisterView(CreateView):
@@ -56,4 +57,42 @@ def profile_view(request):
     else:
         monthly_payment = None
 
-    return render(request, 'profile.html', {'user': user, 'offers': offers, 'monthly_payment': monthly_payment})
+    recommendation = "Поки нема рекомендацій"
+    try:
+        dietitian_client = DietitianClient.objects.get(client=user)
+        recommendation = dietitian_client.recommendation
+    except DietitianClient.DoesNotExist:
+        pass
+
+    context = {
+        'user': user,
+        'offers': offers,
+        'monthly_payment': monthly_payment,
+        'recommendation': recommendation
+    }
+    return render(request, 'profile.html', context)
+
+
+@staff_member_required
+def manager_profile_view(request):
+    clients = DietitianClient.objects.filter(dietitian=request.user).select_related('client')
+    manager_first_name = request.user.first_name
+    manager_last_name = request.user.last_name
+
+    context = {
+        "manager_first_name": manager_first_name,
+        "manager_last_name": manager_last_name,
+        'clients': clients
+    }
+    return render(request, 'manager_profile.html', context)
+
+
+def client_profile_view(request, client_id):
+    client = get_object_or_404(DietitianClient, pk=client_id)
+    if request.method == 'POST':
+        recommendation = request.POST.get('recommendation')
+        client.recommendation = recommendation
+        client.save()
+        return redirect('client_profile', client_id=client_id)
+
+    return render(request, 'client_profile.html', {'client': client})

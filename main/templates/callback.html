@@ -8,18 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
-    <style>
-        .callback-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-        }
 
-        .callback-section {
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <header class="header">
@@ -31,28 +20,96 @@
     <main>
         <section class="callback-section">
             <div class="callback-container">
-                <div class="container">
+                <div class="form-container">
                     <h1>Резервація дзвінка</h1>
                     <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
                         {% csrf_token %}
                         {{ form.non_field_errors }}
-                        <div class="row gy-4">
-                            {% for field in form %}
-                                <p><label class="form-label" for="{{ field.id_for_label }}">{{field.label}}: </label>{{ field }}</p>
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label class="form-label" for="{{ field.id_for_label }}">{{field.label}}: </label>
+                                {{ field }}
                                 <div class="form-error">{{ field.errors }}</div>
-                            {% endfor %}
-                        </div>
-                        <button type="submit" class="btn btn-primary">Зарезервувати</button>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="form-button">Зарезервувати</button>
                     </form>
+                        <p>Заповніть форму зворотнього дзвінку, і ми допоможемо підібрати Вам найкращі рекомендації та найкращого спеціаліста</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2023 Dietology. Все права захищені.</p>
+        <div class="footer-container">
+            <p>{{ footer_text }}</p>
         </div>
     </footer>
 </body>
 </html>
+<style>
+        .callback-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .callback-section {
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-error {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f9f9f9;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>

@@ -4,40 +4,50 @@
   <div class="container container-flex">
     <img class="section-result__img container-flex__img" src="{% static 'images/character-eaating.svg' %}" alt="Eating boy">
     <div class="section-result__info container-flex__info">
-      <h2>Лучший результат</h2>
-      <h3>Правильное питание действительно работает</h3>
-      <p class="section-result__text container-flex__text">При неправильном питании спорт может оказаться вредным для здоровья. И наоборот – сбалансированный рацион, разработанный с учетом индивидуальных особенностей человека, помогает не только похудеть и получить прекрасное тело, но и добиться невероятных результатов в спорте.</p>
-      <a href="#/" class="btn">Выбрать диетолога</a>
+      <h2>Кращий результат</h2>
+      <h3>Правильне харчування дійсно працює</h3>
+      <p class="section-result__text container-flex__text">При неправильному харчуванні спорт може бути шкідливим для 
+          здоров'я. І навпаки – збалансований раціон, розроблений з урахуванням індивідуальних особливостей людини, 
+          допомагає не лише схуднути та отримати чудове тіло, а й досягти неймовірних результатів у спорті.</p>
+      <a href="{% url 'callback' %}" class="btn">Обрати дієтолога</a>
     </div>
   </div>
 </section>
   <section class="section-describe" id="section-describe">
   <div class="container">
-    <h2>Как это работает?</h2>
+    <h2>Як це працює?</h2>
     <div class="section-describe__container">
       <div class="section-describe__card">
         <img class="section-describe__img" src="{% static 'images/icons/folder.svg' %}" alt="">
-        <h3>Обзор вашей ситуации и целей</h3>
+        <h3>Огляд вашої ситуації та цілей</h3>
         <ul class="section-describe__list">
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Мы внимательно изучим Ваше пищевое поведение, образ жизни, проблемы со здоровьем и цели.</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Составим план работы на пол года вперед</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ми уважно вивчимо Вашу 
+              харчову поведінку, спосіб життя, проблеми зі здоров'ям та цілі.</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Складемо план роботи 
+              на півроку вперед</span></li>
         </ul>
       </div>
       <div class="section-describe__card">
         <img class="section-describe__img" src="{% static 'images/icons/woman.svg' %}" alt="">
-        <h3>Выберите идеального онлайн диетолога</h3>
+        <h3>Обери ідеального онлайн дієтолога</h3>
         <ul class="section-describe__list">
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Выберите персонального диетолога из списка, сформированного на основе Вашей информации в шаге 1</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Вы сможете ознакомиться с опытом, включая профессиональный стаж, образование, профессиональные подходы и отзывы</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Идеальный диетолог постоянно на связи</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Оберіть персонального 
+              дієтолога зі списку, сформованого на основі Вашої інформації в кроці 1</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ви зможете ознайомитись
+              з досвідом, включаючи професійний стаж, освіту, професійні підходи та відгуки</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ідеальний дієтолог 
+              постійно на зв'язку</span></li>
         </ul>
       </div>
       <div class="section-describe__card">
         <img class="section-describe__img" src="{% static 'images/icons/lamp-pazzle.svg' %}" alt="">
-        <h3>Получайте поддержку и мотивацию</h3>
+        <h3>Отримуйте підтримку та мотивацію</h3>
         <ul class="section-describe__list">
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Идеальный диетолог постоянно на связи</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Диетолог всегда готов скорректировать ваше меню в случае, если вы испытываете недостаток в некоторых продуктах питания или просто влечение к сладкому</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ідеальний дієтолог 
+              постійно на зв'язку</span></li>
+          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Дієтолог завжди готовий 
+              скоригувати ваше меню у випадку, якщо ви відчуваєте недолік у деяких продуктах харчування або 
+              просто потяг до солодкого</span></li>
         </ul>
       </div>
     </div>
@@ -45,7 +55,7 @@
 </section>
   <section class="section-dependency" id="section-dependency">
   <div class="container">
-    <h2>Зависимость питания и спорта</h2>
+    <h2>Залежність харчування та спорту</h2>
     <div class="section-dependency__container">
       <img class="section-dependency__img" src="{% static 'images/depencies.svg' %}" alt="">
       <div class="section-dependency__info">
@@ -54,8 +64,9 @@
             Fe
           </div>
           <div class="section-dependency__item-text">
-            <h3>Железо</h3>
-            <p>Обуславливает выносливость и работоспособность. Недостаток железа – самая распространенная проблема среди атлетов</p>
+            <h3>Залізо</h3>
+            <p>Зумовлює витривалість та працездатність. Нестача заліза – найпоширеніша проблема 
+                серед атлетів</p>
           </div>
         </div>
         <div class="section-dependency__item">
@@ -63,8 +74,8 @@
             B
           </div>
           <div>
-            <h3>Витамин В</h3>
-            <p>При дефиците нарушается работа сердечно-сосудистого аппарата, есть риск сердечного приступа во время забега</p>
+            <h3>Вітамін В</h3>
+            <p>При дефіциті порушується робота серцево-судинного апарату, є ризик серцевого нападу під час забігу</p>
           </div>
         </div>
         <div class="section-dependency__item">
@@ -72,8 +83,8 @@
             D
           </div>
           <div>
-            <h3>Витамин D</h3>
-            <p>Дефицит вызывает нарушение кальций-фосфорного обмена, отсюда – травмы и переломы.</p>
+            <h3>Вітамін D</h3>
+            <p>Дефіцит викликає порушення кальцій-фосфорного обміну, звідси – травми та переломи.</p>
           </div>
         </div>
         <div class="section-dependency__item">
@@ -81,8 +92,8 @@
             Mg
           </div>
           <div>
-            <h3>Магний</h3>
-            <p>Обеспечивает правильную работу мышц и поглощение кислорода.</p>
+            <h3>Магній</h3>
+            <p>Забезпечує правильну роботу м'язів та поглинання кисню.</p>
           </div>
         </div>
       </div>
