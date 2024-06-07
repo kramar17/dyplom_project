@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('price', models.IntegerField()),
                 ('old_price', models.IntegerField()),
                 ('free_consultation', models.BooleanField()),
-                ('back_up_money', models.BooleanField()),
+                ('back_up_money', models.BigIntegerField()),
                 ('couching', models.BooleanField()),
                 ('consultation_about_sport', models.BooleanField()),
                 ('free_week_for_family', models.BooleanField()),
