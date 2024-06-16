@@ -1,37 +1,34 @@
 {% load static %}
 <div class="header__container">
-<a href="{% url 'index' %}" class="company-name header__company-name">{{ site_name }}</a>
-<nav class="menu header__menu">
-    <ul class="menu__list header__menu-list">
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-problems{% else %}#section-problems{% endif %}" class="menu__link">Чому ми?</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-describe{% else %}#section-describe{% endif %}" class="menu__link">Як це працює?</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-subscriptions{% else %}#section-subscriptions{% endif %}" class="menu__link">Вартість</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-eating{% else %}#section-eating{% endif %}" class="menu__link">Переваги</a></li>
-        <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-ask{% else %}#section-ask{% endif %}" class="menu__link">Запитайте нас</a></li>
-        <a href="{% url 'callback' %}" class="btn header-btn">Замовити дзвінок</a>
-    </ul>
+    <a href="{% url 'index' %}" class="company-name header__company-name">{{ site_name }}</a>
+    <nav class="menu header__menu">
+        <ul class="menu__list header__menu-list">
+            <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-problems{% else %}#section-problems{% endif %}" class="menu__link">Чому ми?</a></li>
+            <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-describe{% else %}#section-describe{% endif %}" class="menu__link">Як це працює?</a></li>
+            <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-subscriptions{% else %}#section-subscriptions{% endif %}" class="menu__link">Вартість</a></li>
+            <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-eating{% else %}#section-eating{% endif %}" class="menu__link">Переваги</a></li>
+            <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-ask{% else %}#section-ask{% endif %}" class="menu__link">Запитайте нас</a></li>
+            <a href="{% url 'callback' %}" class="btn header-btn">Замовити дзвінок</a>
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li class="menu__item"><a href="{% url 'manager_profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
+                {% else %}
+                    <li class="menu__item"><a href="{% url 'profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
+                {% endif %}
+                <li class="menu__item"><a href="{% url 'logout' %}" class="menu__link header__logout">Вийти</a></li>
+            {% else %}
+                <li class="menu__item"><a href="{% url 'login' %}" class="menu__link header__login">Вхід</a></li>
+                <li class="menu__item"><a href="{% url 'register' %}" class="menu__link header__register">Реєстрація</a></li>
+            {% endif %}
+        </ul>
 
-    <ul class="menu__list header__menu-list header__menu-list--auth">
-    {% if user.is_authenticated %}
-        {% if user.is_staff %}
-            <li class="menu__item"><a href="{% url 'manager_profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
-        {% else %}
-            <li class="menu__item"><a href="{% url 'profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
-        {% endif %}
-        <li class="menu__item"><a href="{% url 'logout' %}" class="menu__link header__logout">Вийти</a></li>
-    {% else %}
-        <li class="menu__item"><a href="{% url 'login' %}" class="menu__link header__login">Вхід</a></li>
-        <li class="menu__item"><a href="{% url 'register' %}" class="menu__link header__register">Реєстрація</a></li>
-    {% endif %}
-</ul>
-
-</nav>
+    </nav>
 </div>
 
 <style>
     .header__menu {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .header__menu-list {
@@ -39,15 +36,20 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
+        align-items: center;
     }
 
     .menu__link.header__login,
     .menu__link.header__register {
-        font-size: 18px; /* Увеличение размера ссылок */
+        font-size: 18px; /
     }
-
-    .header__menu-list--auth {
-        margin-top: 10px;
-        margin-left: auto; /* Выравнивание по правому краю */
+    .header__container{
+        display: flex;
+        justify-content: flex-end;
+        gap: 2.7em;
+        align-items: center;
+        max-width: 1360px;
+        width: 95%;
+        margin: 0 auto;
     }
 </style>

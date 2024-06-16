@@ -1,8 +1,11 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from main.views import main_page, callback_view
 from account.views import (RegisterView, MyLoginView, logout_view, profile_view, manager_profile_view,
                            client_profile_view)
+from shop.views import OurShopView
 
 
 urlpatterns = [
@@ -15,5 +18,5 @@ urlpatterns = [
     path('callback/', callback_view, name='callback'),
     path('manager_profile/', manager_profile_view, name='manager_profile'),
     path('client/<int:client_id>/', client_profile_view, name='client_profile'),
-
-]
+    path('our_shop/', OurShopView.as_view(), name='our_shop'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
