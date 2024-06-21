@@ -1,13 +1,24 @@
-from django.views.generic import TemplateView
 from django.db.models import Q
-from shop.models import Product, ProductCategory, Manufacturer
+from django.shortcuts import get_object_or_404, redirect
+from django.views import View
+from django.views.generic import TemplateView
+from django.contrib.auth import get_user_model
+from shop.models import Cart, Product, ProductCategory, Manufacturer
 
+User = get_user_model()
 
 class OurShopView(TemplateView):
     template_name = 'shop.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        user = self.request.user
+        if user.is_authenticated:
+            # Проверяем, есть ли у пользователя корзина
+            if not hasattr(user, 'cart'):
+                # Создаем новую корзину для пользователя
+                Cart.objects.create(user=user, products={})
 
         # Получение всех категорий и производителей
         categories = ProductCategory.objects.filter(is_visible=True)
@@ -39,5 +50,20 @@ class OurShopView(TemplateView):
         context['selected_categories'] = list(map(int, selected_categories))
         context['selected_manufacturers'] = list(map(int, selected_manufacturers))
         context['search_query'] = search_query
+        context['cart'] = user.cart if user.is_authenticated else None
 
         return context
+
+
+class AddToCartView(View):
+    def post(self, request, product_id):
+        product = get_object_or_404(Product, id=product_id)
+        quantity = int(request.POST.get('quantity', 1))
+        user = request.user
+
+        if user.is_authenticated:
+            cart, created = Cart.objects.get_or_create(user=user)
+            cart.add_product(product, quantity=quantity)
+
+        return redirect('our_shop')
+
