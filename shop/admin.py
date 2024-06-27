@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductCategory, Manufacturer, Product
+from .models import ProductCategory, Manufacturer, Product, Order
 
 
 @admin.register(ProductCategory)
@@ -18,3 +18,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'category', 'manufacturer', 'is_visible']
     list_filter = ['category', 'manufacturer']
     search_fields = ['name', 'description']
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'first_name', 'last_name', 'total_price', 'created_at', 'is_processed')
+    list_filter = ('is_processed', 'created_at')
+    search_fields = ('user__username', 'user__email', 'phone_number', 'first_name', 'last_name')
+
+
+

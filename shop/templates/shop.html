@@ -37,7 +37,7 @@
             <!-- Список продуктов -->
             {% for product in products %}
             <div class="product">
-                <h2>{{ product.name }}</h2>
+                <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
                 <p>Price: {{ product.price }}</p>
                 <p>Description: {{ product.description }}</p>
                 <!-- Можно добавить изображение продукта -->
@@ -55,6 +55,10 @@
             {% empty %}
             <p>No products found.</p>
             {% endfor %}
+        </div>
+
+        <div class="cart-button">
+            <a href="{% url 'cart' %}" class="cart-link">Корзина</a>
         </div>
     </main>
 
@@ -92,8 +96,23 @@
           margin-bottom: 10px;
         }
         input[type=number] {
-        width: 40px; /* Задаем желаемую ширину поля в пикселях */
-    }
+          width: 40px; /* Задаем желаемую ширину поля в пикселях */
+        }
+        .cart-button {
+          text-align: right; /* Выравнивание кнопки по правому краю */
+          margin-top: 20px; /* Дополнительный отступ от списка продуктов */
+        }
+        .cart-link {
+          color: #fff;
+          background-color: #4CAF50;
+          padding: 5px 10px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-size: 16px; /* Уменьшение размера шрифта кнопки */
+        }
+        .cart-link:hover {
+          background-color: #45a049;
+        }
     </style>
 
     <script>

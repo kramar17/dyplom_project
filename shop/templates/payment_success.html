@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" type="image/x-icon' href="{% static 'images/icons/favicon.ico' %}">
+    <title>Оплата успешна</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav-container {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .message-container {
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .message-container h2 {
+            color: #4CAF50;
+        }
+        .message-container a {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .message-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        {% include 'nav.html' %}
+    </div>
+    <div class="message-container">
+        <h2>Оплата успешна. Спасибо вам!</h2>
+        <a href="{% url 'index' %}">Вернуться на главную</a>
+    </div>
+</body>
+</html>
