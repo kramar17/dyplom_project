@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+  <title>DIETOLOGONLINE - Магазин</title>
+</head>
+<body>
+    <!-- Включення загальної навігаційної панелі -->
+    {% include 'nav.html' %}
+
+    <main>
+        <div class="filters">
+            <h3>Фільтри</h3>
+            <!-- Форма для фільтрації за категоріями та виробниками -->
+            <form method="GET" action="">
+                <h4>Категорії:</h4>
+                {% for category in categories %}
+                <label><input type="checkbox" name="categories" value="{{ category.id }}" {% if category.id in selected_categories %}checked{% endif %}> {{ category.name }}</label><br>
+                {% endfor %}
+                <h4>Виробники:</h4>
+                {% for manufacturer in manufacturers %}
+                <label><input type="checkbox" name="manufacturers" value="{{ manufacturer.id }}" {% if manufacturer.id in selected_manufacturers %}checked{% endif %}> {{ manufacturer.name }}</label><br>
+                {% endfor %}
+                <h4>Пошук:</h4>
+                <input type="text" name="search" value="{{ search_query }}">
+                <button type="submit">Фільтрувати</button>
+            </form>
+        </div>
+
+        <div class="products">
+            <h1>Наш магазин</h1>
+            <!-- Список продуктів -->
+            {% for product in products %}
+            <div class="product">
+                <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
+                <p>Ціна: {{ product.price }}</p>
+                <p>Опис: {{ product.description }}</p>
+                <!-- Можливе додавання зображення продукту -->
+                {% if product.photo %}
+                <img src="{{ product.photo.url }}" alt="{{ product.name }}">
+                {% endif %}
+                <!-- Форма для додавання товару до кошика з полем кількості -->
+                <form method="post" action="{% url 'add_to_cart' product.id %}" id="add_to_cart_form_{{ product.id }}">
+                    {% csrf_token %}
+                    <label for="quantity_{{ product.id }}">Кількість:</label>
+                    <input type="number" id="quantity_{{ product.id }}" name="quantity" min="1" value="1">
+                    <button type="submit">Додати в кошик</button>
+                </form>
+            </div>
+            {% empty %}
+            <p>Товари не знайдено.</p>
+            {% endfor %}
+        </div>
+
+        <div class="cart-button">
+            <a href="{% url 'cart' %}" class="cart-link">Корзина</a>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Футер, якщо є -->
+    </footer>
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0 auto;
+          max-width: 1200px;
+          padding: 20px;
+        }
+        main {
+          display: flex;
+          justify-content: space-between;
+        }
+        .filters {
+          width: 200px;
+        }
+        .products {
+          flex: 1;
+          padding-left: 20px;
+        }
+        .product {
+          margin-bottom: 20px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          background-color: #f9f9f9;
+        }
+        .product img {
+          max-width: 100px;
+          max-height: 100px;
+          margin-bottom: 10px;
+        }
+        input[type=number] {
+          width: 40px; /* Задаємо бажану ширину поля в пікселях */
+        }
+        .cart-button {
+          text-align: right; /* Вирівнювання кнопки по правому краю */
+          margin-top: 20px; /* Додатковий відступ від списку продуктів */
+        }
+        .cart-link {
+          color: #fff;
+          background-color: #4CAF50;
+          padding: 5px 10px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-size: 16px; /* Зменшення розміру шрифту кнопки */
+        }
+        .cart-link:hover {
+          background-color: #45a049;
+        }
+    </style>
+
+    <script>
+    </script>
+</body>
+</html>

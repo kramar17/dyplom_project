@@ -5,27 +5,62 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
 from django.contrib.auth import logout, authenticate, login
-from account.forms import LoginForm
-from account.forms import RegisterForm
+from account.forms import LoginForm, RegisterForm
 from account.models import OfferModel, UserDiscount, DietitianClient
 
 
 class RegisterView(CreateView):
+    """
+    View for user registration.
+
+    Attributes:
+        template_name (str): Template file path for rendering the registration form.
+        form_class (class): Form class used for user registration.
+        success_url (str): URL to redirect after successful registration.
+    """
+
     template_name = 'register.html'
     form_class = RegisterForm
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
+        """
+        Process the valid form submission.
+
+        Args:
+            form (Form): Validated form instance.
+
+        Returns:
+            HttpResponse: Redirects to success URL after saving the form.
+        """
         form.save()
         return super().form_valid(form)
 
 
 class MyLoginView(FormView):
+    """
+    View for user login.
+
+    Attributes:
+        template_name (str): Template file path for rendering the login form.
+        form_class (class): Form class used for user login.
+        success_url (str): URL to redirect after successful login.
+    """
+
     template_name = 'login.html'
     form_class = LoginForm
     success_url = '/'
 
     def form_valid(self, form):
+        """
+        Process the valid form submission.
+
+        Args:
+            form (Form): Validated form instance.
+
+        Returns:
+            HttpResponse: Redirects to success URL after authentication.
+        """
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
         user = authenticate(self.request, username=username, password=password)
@@ -38,12 +73,30 @@ class MyLoginView(FormView):
 
 
 def logout_view(request):
+    """
+    View for user logout.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponseRedirect: Redirects to the home page after logout.
+    """
     logout(request)
     return redirect('/')
 
 
 @login_required
 def profile_view(request):
+    """
+    View for user profile.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: Renders the user profile page with necessary context data.
+    """
     user = request.user
     offers = OfferModel.objects.all()
     monthly_payment = None
@@ -75,6 +128,15 @@ def profile_view(request):
 
 @staff_member_required
 def manager_profile_view(request):
+    """
+    View for manager profile.
+
+    Args:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: Renders the manager profile page with necessary context data.
+    """
     clients = DietitianClient.objects.filter(dietitian=request.user).select_related('client')
     manager_first_name = request.user.first_name
     manager_last_name = request.user.last_name
@@ -88,6 +150,16 @@ def manager_profile_view(request):
 
 
 def client_profile_view(request, client_id):
+    """
+    View for client profile.
+
+    Args:
+        request (HttpRequest): The request object.
+        client_id (int): ID of the client.
+
+    Returns:
+        HttpResponse: Renders the client profile page with necessary context data.
+    """
     client = get_object_or_404(DietitianClient, pk=client_id)
     if request.method == 'POST':
         recommendation = request.POST.get('recommendation')

@@ -1,11 +1,19 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from account.models import OfferModel
 from main.forms import CallBackForm
-from django.contrib import messages
 
 
 def main_page(request):
-    offers = OfferModel.objects.all().filter(is_visible=True).order_by('sort')
+    """
+    View function for rendering the main page.
+
+    Retrieves visible offers and renders them along with static content.
+
+    Returns:
+        HttpResponse: Rendered HTML response.
+    """
+    offers = OfferModel.objects.filter(is_visible=True).order_by('sort')
     free_consultation = 'Безкоштовна консультація'
     eating_plan = 'План харчування розрозблюється з урахуванням ваших уподобань та потреб здоровья'
     back_up_money = 'Гарантія повернення коштів протягом 5 днів'
@@ -29,6 +37,16 @@ def main_page(request):
 
 
 def callback_view(request):
+    """
+    View function for handling callback form submissions.
+
+    Accepts POST requests with form data, validates and saves the form,
+    then redirects to the main page with a success message. If the request
+    method is GET, renders an empty callback form.
+
+    Returns:
+        HttpResponse: Rendered HTML response.
+    """
     if request.method == 'POST':
         form = CallBackForm(request.POST)
         if form.is_valid():
@@ -37,5 +55,5 @@ def callback_view(request):
             return redirect('/')
     else:
         form = CallBackForm()
-    return render(request, 'callback.html', {'form': form})
 
+    return render(request, 'callback.html', {'form': form})

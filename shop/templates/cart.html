@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+  <title>DIETOLOGONLINE - Кошик</title>
+</head>
+<body>
+    <!-- Включення загальної навігаційної панелі -->
+    {% include 'nav.html' %}
+
+    <main>
+        <div class="products">
+            <h1>Кошик</h1>
+            <!-- Список товарів у кошику -->
+            {% if cart_items %}
+                {% for item in cart_items %}
+                    <div class="product">
+                        <h2>{{ item.product.name }}</h2>
+                        <p>Ціна: {{ item.product.price }}</p>
+                        <p>Опис: {{ item.product.description }}</p>
+                        <!-- Зображення товару -->
+                        {% if item.product.photo %}
+                            <img src="{{ item.product.photo.url }}" alt="{{ item.product.name }}">
+                        {% endif %}
+                        <div class="quantity-control">
+                            <!-- Форма для зменшення кількості товару -->
+                            <form method="post" action="{% url 'update_cart' %}" class="quantity-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <button type="submit" name="decrease_quantity" class="quantity-button decrease">-</button>
+                            </form>
+                            <span>у кошику {{ item.quantity }} шт</span>
+                            <!-- Форма для збільшення кількості товару -->
+                            <form method="post" action="{% url 'update_cart' %}" class="quantity-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <button type="submit" name="increase_quantity" class="quantity-button increase">+</button>
+                            </form>
+                            <!-- Форма для видалення товару з кошика -->
+                            <form method="post" action="{% url 'update_cart' %}" class="quantity-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <button type="submit" name="remove_item" class="quantity-button remove">Видалити</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- Загальна вартість товарів у кошику -->
+                <div class="total">
+                    <h3>Загальна вартість: {{ total_price }}</h3>
+                </div>
+                <!-- Кнопка перейти до оплати -->
+                <form method="post" action="{% url 'payment' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="pay-button">Перейти до оплати</button>
+                </form>
+            {% else %}
+                <p>Ваш кошик порожній.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0 auto;
+          max-width: 1200px;
+          padding: 20px;
+        }
+        main {
+          padding-left: 20px;
+        }
+        .products {
+          padding-left: 20px;
+        }
+        .product {
+          margin-bottom: 20px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          background-color: #f9f9f9;
+        }
+        .product img {
+          max-width: 100px;
+          max-height: 100px;
+          margin-bottom: 10px;
+        }
+        .quantity-control {
+          display: flex;
+          align-items: center;
+        }
+        .quantity-form {
+          display: inline;
+          margin: 0 5px;
+        }
+        .quantity-button {
+          font-size: 18px;
+          padding: 5px 10px;
+          border: none;
+          cursor: pointer;
+        }
+        .quantity-button.decrease, .quantity-button.increase {
+          background-color: green;
+          color: white;
+          margin: 0 5px;
+        }
+        .quantity-button.remove {
+          background-color: red;
+          color: white;
+          margin-left: 10px;
+        }
+        .total {
+          margin-top: 20px;
+        }
+        .pay-button {
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+          float: right;
+          margin-top: 20px;
+        }
+    </style>
+</body>
+</html>

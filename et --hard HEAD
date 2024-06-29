@@ -1,0 +1,59 @@
+[33mcommit eab1191b8443ab72075e728dec9c5b91c4063c34[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Fri Jun 21 15:19:04 2024 +0300
+
+    add shop page and view
+
+[33mcommit f644614665bdfb868098a566ba0b40ba6c1016d7[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Sun Jun 16 16:26:42 2024 +0300
+
+    add shop
+
+[33mcommit b40015d01956fdcfcd9975d16e1cf80d6c236fc6[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Wed Jun 5 16:10:36 2024 +0300
+
+    Add recomendztion to profile, translate all to ukranian
+
+[33mcommit 471de2f868a373d3360443ac8542f8b7b070f19a[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Mon Jun 3 15:37:29 2024 +0300
+
+    add contextProcessor
+
+[33mcommit 9bc32ce17ec36da507fb47631baeedf50050d0dc[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Mon Jun 3 14:27:34 2024 +0300
+
+    add model dietitianclient_client
+
+[33mcommit b82406a8d71204cb0202c9f5cd70e2540f3f0ed2[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Mon Jun 3 14:06:38 2024 +0300
+
+    add discount co models and to profile.html
+
+[33mcommit 3bb5c37009cd6623ebbe2c1d8599cdbf076a536a[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Mon Jun 3 13:19:32 2024 +0300
+
+    revork nav and login, register and profile page
+
+[33mcommit 6061923e19aa7a043f3677e7f63a4574cd9046b0[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Sat Jun 1 15:12:01 2024 +0300
+
+    add model of offers
+
+[33mcommit f4aee32d707232a813c33c175cfb27d09a59117e[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Sat Jun 1 14:29:17 2024 +0300
+
+    add login link, register link and profile page and link
+
+[33mcommit 9606ca71d2b001869e4c80bdf930bafc499560c0[m
+Author: Kramar_17 <vetal.kramarov@gmail.com>
+Date:   Thu May 30 15:00:50 2024 +0300
+
+    create project

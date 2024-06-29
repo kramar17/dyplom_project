@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+    <title>Оплата</title>
+</head>
+<body>
+    <div class="nav-container">
+        {% include 'nav.html' %}
+    </div>
+
+    <div class="form-container">
+        <h2>Оплата</h2>
+        <p class="total-price">До сплати: {{ total_price }} грн.</p>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ payment_form.non_field_errors }}
+            <h3>Дані для оплати</h3>
+            <div class="form-group">
+                <label for="id_card_number">Номер картки</label>
+                {{ payment_form.card_number }}
+            </div>
+            <div class="form-group">
+                <label for="id_expiration_date">Термін дії (MM/YY)</label>
+                {{ payment_form.expiration_date }}
+            </div>
+            <div class="form-group">
+                <label for="id_cvv">CVV-код</label>
+                {{ payment_form.cvv }}
+            </div>
+
+            <h3>Дані для доставки</h3>
+            {{ delivery_form.non_field_errors }}
+            <div class="form-group">
+                <label for="id_city">Місто</label>
+                {{ delivery_form.city }}
+            </div>
+            <div class="form-group">
+                <label for="id_address">Адреса</label>
+                {{ delivery_form.address }}
+            </div>
+            <div class="form-group">
+                <label for="id_comment">Коментар</label>
+                {{ delivery_form.comment }}
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Оплатити</button>
+            </div>
+        </form>
+    </div>
+</body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .nav-container {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        .total-price {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</html>
