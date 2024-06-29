@@ -12,28 +12,26 @@ User = get_user_model()
 
 
 class OurShopView(TemplateView):
+    """View for displaying the main shop page."""
+
     template_name = 'shop.html'
 
     def get_context_data(self, **kwargs):
+        """Retrieve context data for the shop view."""
         context = super().get_context_data(**kwargs)
 
         user = self.request.user
         if user.is_authenticated:
-            # Проверяем, есть ли у пользователя корзина
             if not hasattr(user, 'cart'):
-                # Создаем новую корзину для пользователя
                 Cart.objects.create(user=user, products={})
 
-        # Получение всех категорий и производителей
         categories = ProductCategory.objects.filter(is_visible=True)
         manufacturers = Manufacturer.objects.filter(is_visible=True)
 
-        # Получение фильтров из GET-запроса
         selected_categories = self.request.GET.getlist('categories')
         selected_manufacturers = self.request.GET.getlist('manufacturers')
         search_query = self.request.GET.get('search', '')
 
-        # Фильтрация продуктов
         products = Product.objects.filter(is_visible=True)
 
         if selected_categories:
@@ -47,7 +45,6 @@ class OurShopView(TemplateView):
                 Q(name__icontains=search_query) | Q(description__icontains=search_query)
             )
 
-        # Добавление данных в контекст
         context['categories'] = categories
         context['manufacturers'] = manufacturers
         context['products'] = products
@@ -60,7 +57,10 @@ class OurShopView(TemplateView):
 
 
 class AddToCartView(View):
+    """View for adding products to the cart."""
+
     def post(self, request, product_id):
+        """Handle POST request to add a product to the cart."""
         product = get_object_or_404(Product, id=product_id)
         quantity = int(request.POST.get('quantity', 1))
         user = request.user
@@ -73,9 +73,12 @@ class AddToCartView(View):
 
 
 class CartView(TemplateView):
+    """View for displaying the cart."""
+
     template_name = 'cart.html'
 
     def get_context_data(self, **kwargs):
+        """Retrieve context data for the cart view."""
         context = super().get_context_data(**kwargs)
 
         user = self.request.user
@@ -99,6 +102,7 @@ class CartView(TemplateView):
         return context
 
     def post(self, request):
+        """Handle POST request to update the cart."""
         user = request.user
         cart = user.cart
         product_id = request.POST.get('product_id')
@@ -113,11 +117,14 @@ class CartView(TemplateView):
 
 
 class PaymentView(TemplateView):
+    """View for handling payment process."""
+
     template_name = 'pay.html'
     payment_form_class = PaymentForm
     delivery_form_class = DeliveryForm
 
     def get_context_data(self, **kwargs):
+        """Retrieve context data for the payment view."""
         context = super().get_context_data(**kwargs)
         user = self.request.user
         cart = user.cart
@@ -131,6 +138,7 @@ class PaymentView(TemplateView):
         return context
 
     def post(self, request, *args, **kwargs):
+        """Handle POST request for processing payment."""
         payment_form = self.payment_form_class(request.POST)
         delivery_form = self.delivery_form_class(request.POST)
 
@@ -139,22 +147,20 @@ class PaymentView(TemplateView):
             cart = user.cart
             total_price = sum(item['quantity'] * float(item['price']) for item in cart.products.values())
 
-            # Сбор данных из формы доставки
             city = delivery_form.cleaned_data['city']
             address = delivery_form.cleaned_data['address']
             comment = delivery_form.cleaned_data['comment']
 
             products = ''
-            for product_id, item in cart.products.items():  # используем .items() для итерации по словарю
+            for product_id, item in cart.products.items():
                 product = get_object_or_404(Product, id=product_id)
                 products += f'{product.name} {product.manufacturer}, {item["quantity"]} штук,   '
 
-            # Создаем новый заказ
             order = Order.objects.create(
                 user=user,
                 products=products,
                 total_price=total_price,
-                phone_number=user.username,  # Номер телефона берем из self.username
+                phone_number=user.username,
                 first_name=user.first_name,
                 last_name=user.last_name,
                 city=city,
@@ -162,10 +168,8 @@ class PaymentView(TemplateView):
                 comment=comment
             )
 
-            # Очистка корзины
             cart.clear_cart()
 
-            # Перенаправление на страницу успешной оплаты
             return redirect('payment_success')
 
         context = self.get_context_data(payment_form=payment_form, delivery_form=delivery_form)
@@ -173,19 +177,24 @@ class PaymentView(TemplateView):
 
 
 class PaymentSuccessView(TemplateView):
+    """View for displaying payment success page."""
+
     template_name = 'payment_success.html'
 
 
 class PaymentIsSuccessView(View):
-    def get(self, request, *args, **kwargs):
-        # Логика здесь, если требуется, например, сохранение данных о успешной оплате
-        # в базе данных или отправка уведомления на почту.
+    """Placeholder view for indicating payment success (educational purpose)."""
 
+    def get(self, request, *args, **kwargs):
+        """Handle GET request."""
         return render(request, 'payment_success.html')
 
 
 class UpdateCartView(View):
+    """View for updating cart items."""
+
     def post(self, request, *args, **kwargs):
+        """Handle POST request to update cart."""
         user = request.user
         cart = user.cart
         product_id = request.POST.get('product_id')
@@ -201,11 +210,14 @@ class UpdateCartView(View):
 
 
 class ProductDetailView(DetailView):
+    """View for displaying product details."""
+
     model = Product
     template_name = 'product_detail.html'
     context_object_name = 'product'
 
     def get_context_data(self, **kwargs):
+        """Retrieve context data for product detail view."""
         context = super().get_context_data(**kwargs)
         context['comment_form'] = CommentForm()
         context['comments'] = self.object.comments.all()
@@ -213,6 +225,7 @@ class ProductDetailView(DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
+        """Handle POST request to add a comment."""
         if not request.user.is_authenticated:
             return redirect('login')
 
@@ -232,6 +245,7 @@ class ProductDetailView(DetailView):
 
 @login_required
 def add_comment(request, pk):
+    """View function for adding a comment to a product."""
     product = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
         text = request.POST.get('text')

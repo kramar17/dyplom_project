@@ -3,7 +3,20 @@ from .models import CallBackModel
 
 
 class CallBackForm(forms.ModelForm):
+    """
+    Form for CallBackModel.
+
+    Attributes:
+        clean_name (method): Custom cleaning method for the 'name' field.
+    """
+
     def clean_name(self):
+        """
+        Clean 'name' field to convert it to uppercase.
+
+        Returns:
+            str: Cleaned uppercase name.
+        """
         name = self.cleaned_data['name']
         return f'{name.upper()}'
 
@@ -29,4 +42,3 @@ class CallBackForm(forms.ModelForm):
         help_texts = {
             'phone': 'Введіть номер телефону у форматі +380XXXXXXXXX',
         }
-

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,50 +10,50 @@
   <title>DIETOLOGONLINE - Магазин</title>
 </head>
 <body>
-    <!-- Включение общей навигационной панели -->
+    <!-- Включення загальної навігаційної панелі -->
     {% include 'nav.html' %}
 
     <main>
         <div class="filters">
-            <h3>Filters</h3>
-            <!-- Форма для фильтрации по категориям и производителям -->
+            <h3>Фільтри</h3>
+            <!-- Форма для фільтрації за категоріями та виробниками -->
             <form method="GET" action="">
-                <h4>Categories:</h4>
+                <h4>Категорії:</h4>
                 {% for category in categories %}
                 <label><input type="checkbox" name="categories" value="{{ category.id }}" {% if category.id in selected_categories %}checked{% endif %}> {{ category.name }}</label><br>
                 {% endfor %}
-                <h4>Manufacturers:</h4>
+                <h4>Виробники:</h4>
                 {% for manufacturer in manufacturers %}
                 <label><input type="checkbox" name="manufacturers" value="{{ manufacturer.id }}" {% if manufacturer.id in selected_manufacturers %}checked{% endif %}> {{ manufacturer.name }}</label><br>
                 {% endfor %}
-                <h4>Search:</h4>
+                <h4>Пошук:</h4>
                 <input type="text" name="search" value="{{ search_query }}">
                 <button type="submit">Фільтрувати</button>
             </form>
         </div>
 
         <div class="products">
-            <h1>Our Shop</h1>
-            <!-- Список продуктов -->
+            <h1>Наш магазин</h1>
+            <!-- Список продуктів -->
             {% for product in products %}
             <div class="product">
                 <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
-                <p>Price: {{ product.price }}</p>
-                <p>Description: {{ product.description }}</p>
-                <!-- Можно добавить изображение продукта -->
+                <p>Ціна: {{ product.price }}</p>
+                <p>Опис: {{ product.description }}</p>
+                <!-- Можливе додавання зображення продукту -->
                 {% if product.photo %}
                 <img src="{{ product.photo.url }}" alt="{{ product.name }}">
                 {% endif %}
-                <!-- Форма для добавления товара в корзину с полем количества -->
+                <!-- Форма для додавання товару до кошика з полем кількості -->
                 <form method="post" action="{% url 'add_to_cart' product.id %}" id="add_to_cart_form_{{ product.id }}">
                     {% csrf_token %}
-                    <label for="quantity_{{ product.id }}">Quantity:</label>
+                    <label for="quantity_{{ product.id }}">Кількість:</label>
                     <input type="number" id="quantity_{{ product.id }}" name="quantity" min="1" value="1">
-                    <button type="submit">Добавить в корзину</button>
+                    <button type="submit">Додати в кошик</button>
                 </form>
             </div>
             {% empty %}
-            <p>No products found.</p>
+            <p>Товари не знайдено.</p>
             {% endfor %}
         </div>
 
@@ -63,7 +63,7 @@
     </main>
 
     <footer>
-        <!-- Футер, если есть -->
+        <!-- Футер, якщо є -->
     </footer>
 
     <style>
@@ -96,11 +96,11 @@
           margin-bottom: 10px;
         }
         input[type=number] {
-          width: 40px; /* Задаем желаемую ширину поля в пикселях */
+          width: 40px; /* Задаємо бажану ширину поля в пікселях */
         }
         .cart-button {
-          text-align: right; /* Выравнивание кнопки по правому краю */
-          margin-top: 20px; /* Дополнительный отступ от списка продуктов */
+          text-align: right; /* Вирівнювання кнопки по правому краю */
+          margin-top: 20px; /* Додатковий відступ від списку продуктів */
         }
         .cart-link {
           color: #fff;
@@ -108,7 +108,7 @@
           padding: 5px 10px;
           border-radius: 5px;
           text-decoration: none;
-          font-size: 16px; /* Уменьшение размера шрифта кнопки */
+          font-size: 16px; /* Зменшення розміру шрифту кнопки */
         }
         .cart-link:hover {
           background-color: #45a049;
@@ -116,8 +116,6 @@
     </style>
 
     <script>
-        // Пример простого JavaScript для валидации формы или другой функциональности
-        // Добавьте здесь скрипты по мере необходимости
     </script>
 </body>
 </html>

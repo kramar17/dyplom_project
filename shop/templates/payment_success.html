@@ -1,13 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="icon" type="image/x-icon' href="{% static 'images/icons/favicon.ico' %}">
-    <title>Оплата успешна</title>
-    <style>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+    <title>Оплата успішна</title>
+
+</head>
+<body>
+    <div class="nav-container">
+        {% include 'nav.html' %}
+    </div>
+    <div class="message-container">
+        <h2>Оплата успішна. Дякуємо вам!</h2>
+        <a href="{% url 'index' %}">Повернутися на головну</a>
+    </div>
+</body>
+ <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0 auto;
@@ -43,14 +54,4 @@
             background-color: #45a049;
         }
     </style>
-</head>
-<body>
-    <div class="nav-container">
-        {% include 'nav.html' %}
-    </div>
-    <div class="message-container">
-        <h2>Оплата успешна. Спасибо вам!</h2>
-        <a href="{% url 'index' %}">Вернуться на главную</a>
-    </div>
-</body>
 </html>

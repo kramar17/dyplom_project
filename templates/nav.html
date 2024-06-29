@@ -8,21 +8,36 @@
             <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-subscriptions{% else %}#section-subscriptions{% endif %}" class="menu__link">Вартість</a></li>
             <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-eating{% else %}#section-eating{% endif %}" class="menu__link">Переваги</a></li>
             <li class="menu__item"><a href="{% if request.path != '/' %}{% url 'index' %}#section-ask{% else %}#section-ask{% endif %}" class="menu__link">Запитайте нас</a></li>
-            <a href="{% url 'callback' %}" class="btn header-btn">Замовити дзвінок</a>
-            {% if user.is_authenticated %}
-                {% if user.is_staff %}
+        </ul>
+    </nav>
+    <a href="{% url 'our_shop' %}" class="btn header-btn">Наш магазин</a>
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+            <nav class="menu header__menu">
+                <ul class="menu__list header__menu-list">
                     <li class="menu__item"><a href="{% url 'manager_profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
-                {% else %}
+                </ul>
+            </nav>
+        {% else %}
+            <nav class="menu header__menu">
+                <ul class="menu__list header__menu-list">
                     <li class="menu__item"><a href="{% url 'profile' %}" class="menu__link header__profile">Особистий кабінет</a></li>
-                {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+        <nav class="menu header__menu">
+            <ul class="menu__list header__menu-list">
                 <li class="menu__item"><a href="{% url 'logout' %}" class="menu__link header__logout">Вийти</a></li>
-            {% else %}
+            </ul>
+        </nav>
+    {% else %}
+        <nav class="menu header__menu">
+            <ul class="menu__list header__menu-list">
                 <li class="menu__item"><a href="{% url 'login' %}" class="menu__link header__login">Вхід</a></li>
                 <li class="menu__item"><a href="{% url 'register' %}" class="menu__link header__register">Реєстрація</a></li>
-            {% endif %}
-        </ul>
-
-    </nav>
+            </ul>
+        </nav>
+    {% endif %}
 </div>
 
 <style>
@@ -41,9 +56,10 @@
 
     .menu__link.header__login,
     .menu__link.header__register {
-        font-size: 18px; /
+        font-size: 18px;
     }
-    .header__container{
+
+    .header__container {
         display: flex;
         justify-content: flex-end;
         gap: 2.7em;
