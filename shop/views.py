@@ -77,10 +77,6 @@ class CartView(TemplateView):
 
     template_name = 'cart.html'
 
-    @login_required
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
     def get_context_data(self, **kwargs):
         """Retrieve context data for the cart view."""
         context = super().get_context_data(**kwargs)
@@ -126,10 +122,6 @@ class PaymentView(TemplateView):
     template_name = 'pay.html'
     payment_form_class = PaymentForm
     delivery_form_class = DeliveryForm
-
-    @login_required
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         """Retrieve context data for the payment view."""
@@ -200,10 +192,6 @@ class PaymentIsSuccessView(View):
 
 class UpdateCartView(View):
     """View for updating cart items."""
-
-    @login_required
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         """Handle POST request to update cart."""
