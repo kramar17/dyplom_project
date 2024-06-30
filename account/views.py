@@ -7,6 +7,7 @@ from django.views.generic import CreateView, FormView
 from django.contrib.auth import logout, authenticate, login
 from account.forms import LoginForm, RegisterForm
 from account.models import OfferModel, UserDiscount, DietitianClient
+from djangoProject1.loger import user_logger
 
 
 class RegisterView(CreateView):
@@ -33,7 +34,8 @@ class RegisterView(CreateView):
         Returns:
             HttpResponse: Redirects to success URL after saving the form.
         """
-        form.save()
+        user = form.save()  # Зберігаємо користувача
+        user_logger.info(f"Створено нового користувача: {user.username}, email: {user.email}")
         return super().form_valid(form)
 
 

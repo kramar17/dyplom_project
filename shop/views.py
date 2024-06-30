@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView, DetailView
 from django.contrib.auth import get_user_model
+
+from djangoProject1.loger import shop_logger
 from shop.models import Cart, Product, ProductCategory, Manufacturer, Order, Comment
 from .forms import PaymentForm, DeliveryForm, CommentForm
 
@@ -167,6 +169,10 @@ class PaymentView(TemplateView):
                 address=address,
                 comment=comment
             )
+
+            shop_logger.info(f"Замовлення завершено. Загальна сума: {total_price}. "
+                             f"Користувач: {user.username}. Адреса доставки: {city}, {address}. "
+                             f"Товари: {products}")
 
             cart.clear_cart()
 

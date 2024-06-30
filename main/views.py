@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from account.models import OfferModel
+from djangoProject1.loger import logger
 from main.forms import CallBackForm
 
 
@@ -51,6 +52,9 @@ def callback_view(request):
         form = CallBackForm(request.POST)
         if form.is_valid():
             form.save()
+            logger.info(
+                f"Заявка на зворотний дзвінок від {form.cleaned_data.get('name')},"
+                f" телефон: {form.cleaned_data.get('phone')}")
             messages.success(request, 'Заявка на дзвінок прийнята!')
             return redirect('/')
     else:
