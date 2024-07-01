@@ -20,11 +20,11 @@ class RegisterForm(forms.ModelForm):
 
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'}),
-        label='Password'
+        label='Пароль'
     )
     password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Підтвердження паролю'}),
-        label='Confirm Password'
+        label='Підтвердження паролю'
     )
 
     class Meta:
@@ -36,7 +36,12 @@ class RegisterForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Мобільний номер'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
         }
-
+        labels = {
+            'first_name': 'Ім`я',
+            'last_name': 'Прізвище',
+            'username': 'Мобільний номер',
+            'email': 'Електронна пошта',
+        }
         help_texts = {
             'first_name': 'Обов`язкове поле',
             'last_name': 'Обов`язкове поле',
@@ -57,6 +62,7 @@ class RegisterForm(forms.ModelForm):
                 'required': 'Обов`язкове поле',
             }
         }
+
 
     def clean_username(self):
         """
