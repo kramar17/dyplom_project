@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q, Avg
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -13,19 +14,19 @@ from .forms import PaymentForm, DeliveryForm, CommentForm
 User = get_user_model()
 
 
-class OurShopView(TemplateView):
+class OurShopView(LoginRequiredMixin, TemplateView):
     """View for displaying the main shop page."""
 
     template_name = 'shop.html'
+    login_url = '/login/'  # URL для перенаправлення неавтентифікованих користувачів
 
     def get_context_data(self, **kwargs):
         """Retrieve context data for the shop view."""
         context = super().get_context_data(**kwargs)
 
         user = self.request.user
-        if user.is_authenticated:
-            if not hasattr(user, 'cart'):
-                Cart.objects.create(user=user, products={})
+        if not hasattr(user, 'cart'):
+            Cart.objects.create(user=user, products={})
 
         categories = ProductCategory.objects.filter(is_visible=True)
         manufacturers = Manufacturer.objects.filter(is_visible=True)

@@ -31,4 +31,7 @@ urlpatterns = [
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
     path('product/<int:pk>/add_comment/', add_comment, name='add_comment'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
