@@ -1,0 +1,797 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-21 14:23+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\account\context_processors.py:8 .\templates\index.html:12
+msgid "DIETOLOGONLINE"
+msgstr "DIETOLOGONLINE"
+
+#: .\account\context_processors.py:9
+msgid "© 2024 DIETOLOGONLINE. Усі права захищені."
+msgstr "© 2024 DIETOLOGONLINE. All rights reserved."
+
+#: .\account\forms.py:22 .\account\forms.py:23 .\account\forms.py:135
+msgid "Пароль"
+msgstr "Password"
+
+#: .\account\forms.py:26 .\account\forms.py:27
+msgid "Підтвердження паролю"
+msgstr "Password confirmation"
+
+#: .\account\forms.py:34
+msgid "Ім`я користувача"
+msgstr "Username"
+
+#: .\account\forms.py:35
+msgid "Прізвище користувача"
+msgstr "User's last name"
+
+#: .\account\forms.py:36 .\account\forms.py:42
+msgid "Мобільний номер"
+msgstr "Mobile number"
+
+#: .\account\forms.py:37 .\account\templates\profile.html:28
+msgid "Email"
+msgstr "Email"
+
+#: .\account\forms.py:40
+msgid "Ім`я"
+msgstr "First name"
+
+#: .\account\forms.py:41
+msgid "Прізвище"
+msgstr "Last name"
+
+#: .\account\forms.py:43
+msgid "Електронна пошта"
+msgstr "Email"
+
+#: .\account\forms.py:46 .\account\forms.py:47 .\account\forms.py:48
+#: .\account\forms.py:49 .\account\forms.py:53 .\account\forms.py:56
+#: .\account\forms.py:59 .\account\forms.py:62
+msgid "Обов`язкове поле"
+msgstr "Required field"
+
+#: .\account\forms.py:80
+msgid "Невірний формат номеру телефону."
+msgstr "Invalid phone number format."
+
+#: .\account\forms.py:100
+msgid "Паролі не співпадають"
+msgstr "Passwords do not match"
+
+#: .\account\forms.py:132
+msgid "Номер телефону"
+msgstr "Phone number"
+
+#: .\account\templates\client_profile.html:10
+#: .\account\templates\manager_profile.html:10
+#: .\account\templates\manager_profile.html:50
+#: .\account\templates\profile.html:10
+msgid "DIETOLOGONLINE - Профіль"
+msgstr "DIETOLOGONLINE - Profile"
+
+#: .\account\templates\client_profile.html:25
+#: .\account\templates\profile.html:25
+msgid "Профіль користувача"
+msgstr "User Profile"
+
+#: .\account\templates\client_profile.html:26
+msgid "Ім'я:"
+msgstr "First Name:"
+
+#: .\account\templates\client_profile.html:27
+msgid "Призвище:"
+msgstr "Last Name:"
+
+#: .\account\templates\client_profile.html:28
+msgid "Email:"
+msgstr "Email:"
+
+#: .\account\templates\client_profile.html:29
+msgid "Телефон:"
+msgstr "Phone:"
+
+#: .\account\templates\client_profile.html:31
+msgid "Рекомендація:"
+msgstr "Recommendation:"
+
+#: .\account\templates\client_profile.html:35
+msgid "Уведіть рекомендацію"
+msgstr "Enter recommendation"
+
+#: .\account\templates\client_profile.html:40
+msgid "Зберегти"
+msgstr "Save"
+
+#: .\account\templates\login.html:7 .\account\templates\login.html:27
+#: .\account\templates\login.html:38 .\templates\nav.html:65
+msgid "Вхід"
+msgstr "Login"
+
+#: .\account\templates\login.html:40
+msgid "Ще не маєте аккаунту?"
+msgstr "Don't have an account?"
+
+#: .\account\templates\login.html:40 .\account\templates\register.html:7
+#: .\account\templates\register.html:28 .\templates\nav.html:66
+msgid "Реєстрація"
+msgstr "Registration"
+
+#: .\account\templates\manager_profile.html:25
+#: .\account\templates\manager_profile.html:65
+msgid "Профіль менеджера"
+msgstr "Manager Profile"
+
+#: .\account\templates\manager_profile.html:27
+#: .\account\templates\manager_profile.html:67
+msgid "Список клієнтів:"
+msgstr "Client List:"
+
+#: .\account\templates\profile.html:26 .\main\forms.py:37
+msgid "Ім'я"
+msgstr "First Name"
+
+#: .\account\templates\profile.html:27
+msgid "Призвище"
+msgstr "Last Name"
+
+#: .\account\templates\profile.html:29 .\main\forms.py:38
+msgid "Телефон"
+msgstr "Phone"
+
+#: .\account\templates\profile.html:31
+msgid "Ваша знижка"
+msgstr "Your Discount"
+
+#: .\account\templates\profile.html:33
+msgid "У вас немає знижки"
+msgstr "You have no discount"
+
+#: .\account\templates\profile.html:34 .\account\templates\profile.html:53
+msgid "Приводьте друзів, щоб отримати знижку"
+msgstr "Refer friends to get a discount"
+
+#: .\account\templates\profile.html:36
+msgid "Тарифи"
+msgstr "Rates"
+
+#: .\account\templates\profile.html:42
+msgid "грн (зі знижкою)"
+msgstr "UAH (with discount)"
+
+#: .\account\templates\profile.html:44 .\account\templates\profile.html:47
+msgid "грн"
+msgstr "UAH"
+
+#: .\account\templates\profile.html:55
+msgid "Рекомендація"
+msgstr "Recommendation"
+
+#: .\account\templates\register.html:38
+msgid "Зареєструватися"
+msgstr "Register"
+
+#: .\account\views.py:72
+msgid "Невірний логін чи пароль"
+msgstr "Invalid login or password"
+
+#: .\account\views.py:114
+msgid "Поки нема рекомендацій"
+msgstr "No recommendations yet"
+
+#: .\djangoProject1\settings.py:141
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: .\djangoProject1\settings.py:142
+msgid "English"
+msgstr "Англійська"
+
+#: .\main\forms.py:28
+msgid "Ваше ім'я"
+msgstr "Your Name"
+
+#: .\main\forms.py:30
+msgid "Ваш номер телефону"
+msgstr "Your Phone Number"
+
+#: .\main\forms.py:32
+msgid "YYYY-MM-DD"
+msgstr "YYYY-MM-DD"
+
+#: .\main\forms.py:33
+msgid "HH:MM"
+msgstr "HH:MM"
+
+#: .\main\forms.py:34 .\main\forms.py:41
+msgid "Додаткові побажання"
+msgstr "Additional Wishes"
+
+#: .\main\forms.py:39
+msgid "Дата"
+msgstr "Date"
+
+#: .\main\forms.py:40
+msgid "Час"
+msgstr "Time"
+
+#: .\main\forms.py:44
+msgid "Введіть номер телефону у форматі +380XXXXXXXXX"
+msgstr "Enter phone number in the format +380XXXXXXXXX"
+
+#: .\main\templates\callback.html:9 .\main\templates\callback.html:25
+msgid "Резервація дзвінка"
+msgstr "Call Reservation"
+
+#: .\main\templates\callback.html:36
+msgid "Зарезервувати"
+msgstr "Reserve"
+
+#: .\main\templates\callback.html:38
+msgid ""
+"Заповніть форму зворотнього дзвінку, і ми допоможемо підібрати Вам найкращі рекомендації та найкращого спеціаліста"
+msgstr ""
+"Fill out the callback form, and we will help you choose the best recommendations and the best specialist"
+
+
+#: .\main\views.py:24
+msgid "Безкоштовна консультація"
+msgstr "Free Consultation"
+
+#: .\main\views.py:25
+msgid ""
+"План харчування розробляється з урахуванням ваших уподобань та потреб "
+"здоров'я"
+msgstr "A meal plan tailored to your preferences and health needs"
+
+#: .\main\views.py:26
+msgid "Гарантія повернення коштів протягом 5 днів"
+msgstr "Money-back guarantee within 5 days"
+
+#: .\main\views.py:27
+msgid "Коучінг: спеціаліст з харчування буде слідкувати за вашим здоров'ям"
+msgstr "Coaching: A nutrition specialist will monitor your health"
+
+#: .\main\views.py:28
+msgid "Консультації по спортивному харчуванню"
+msgstr "Sports nutrition consultations"
+
+#: .\main\views.py:29
+msgid "Безкоштовний тиждень для друга, чи члена вашої сім'ї"
+msgstr "Free week for a friend or family member"
+
+#: .\main\views.py:30
+msgid "*5-днівна гарантія повернення коштів включена в усі плани"
+msgstr "*5-day money-back guarantee included in all plans"
+
+#: .\shop\templates\cart.html:10
+msgid "DIETOLOGONLINE - Кошик"
+msgstr "DIETOLOGONLINE - Cart"
+
+#: .\shop\templates\cart.html:18
+msgid "Кошик"
+msgstr "Cart"
+
+#: .\shop\templates\cart.html:24 .\shop\templates\shop.html:41
+msgid "Ціна"
+msgstr "Price"
+
+#: .\shop\templates\cart.html:25 .\shop\templates\shop.html:42
+msgid "Опис"
+msgstr "Description"
+
+#: .\shop\templates\cart.html:37
+msgid "у кошику"
+msgstr "in cart"
+
+#: .\shop\templates\cart.html:37
+msgid "шт"
+msgstr "pcs"
+
+#: .\shop\templates\cart.html:48
+msgid "Видалити"
+msgstr "Remove"
+
+#: .\shop\templates\cart.html:55
+msgid "Загальна вартість"
+msgstr "Total cost"
+
+#: .\shop\templates\cart.html:60
+msgid "Перейти до оплати"
+msgstr "Proceed to payment"
+
+#: .\shop\templates\cart.html:63
+msgid "Ваш кошик порожній."
+msgstr "Your cart is empty."
+
+#: .\shop\templates\pay.html:10 .\shop\templates\pay.html:18
+msgid "Оплата"
+msgstr "Payment"
+
+#: .\shop\templates\pay.html:19
+msgid "До сплати"
+msgstr "To Pay"
+
+#: .\shop\templates\pay.html:23
+msgid "Дані для оплати"
+msgstr "Payment Information"
+
+#: .\shop\templates\pay.html:25
+msgid "Номер картки"
+msgstr "Card Number"
+
+#: .\shop\templates\pay.html:29
+msgid "Термін дії (MM/YY)"
+msgstr "Expiration Date (MM/YY)"
+
+#: .\shop\templates\pay.html:33
+msgid "CVV-код"
+msgstr "CVV Code"
+
+
+#: .\shop\templates\pay.html:37
+msgid "Дані для доставки"
+msgstr "Delivery Information"
+
+#: .\shop\templates\pay.html:40
+msgid "Місто"
+msgstr "City"
+
+#: .\shop\templates\pay.html:44
+msgid "Адреса"
+msgstr "Address"
+
+#: .\shop\templates\pay.html:48
+msgid "Коментар"
+msgstr "Comment"
+
+#: .\shop\templates\pay.html:53
+msgid "Оплатити"
+msgstr "Pay"
+
+#: .\shop\templates\payment_success.html:9
+msgid "Оплата успішна"
+msgstr "Payment Successful"
+
+#: .\shop\templates\payment_success.html:16
+msgid "Оплата успішна. Дякуємо вам!"
+msgstr "Payment successful. Thank you!"
+
+#: .\shop\templates\payment_success.html:17
+msgid "Повернутися на головну"
+msgstr "Return to Home"
+
+#: .\shop\templates\product_detail.html:16
+msgid "Ціна:"
+msgstr "Price:"
+
+#: .\shop\templates\product_detail.html:17
+msgid "Опис:"
+msgstr "Description:"
+
+#: .\shop\templates\product_detail.html:23
+msgid "Середня оцінка:"
+msgstr "Average Rating:"
+
+#: .\shop\templates\product_detail.html:26
+msgid "Відгуки та оцінки"
+msgstr "Reviews and Ratings"
+
+#: .\shop\templates\product_detail.html:30
+msgid "Залиште свій відгук"
+msgstr "Leave your review"
+
+#: .\shop\templates\product_detail.html:31
+#: .\shop\templates\product_detail.html:49
+msgid "Оцінка:"
+msgstr "Rating:"
+
+#: .\shop\templates\product_detail.html:39
+msgid "Залишити відгук"
+msgstr "Submit Review"
+
+#: .\shop\templates\product_detail.html:42
+msgid "Будь ласка,"
+msgstr "Please,"
+
+#: .\shop\templates\product_detail.html:42
+msgid "увійдіть"
+msgstr "log in"
+
+#: .\shop\templates\product_detail.html:42
+msgid "щоб залишити відгук та оцінку."
+msgstr "to leave a review and rating."
+
+#: .\shop\templates\product_detail.html:52
+msgid "Поки ще немає відгуків на цей товар."
+msgstr "There are no reviews for this product yet."
+
+#: .\shop\templates\shop.html:10
+msgid "DIETOLOGONLINE - Магазин"
+msgstr "DIETOLOGONLINE - Shop"
+
+#: .\shop\templates\shop.html:18
+msgid "Фільтри"
+msgstr "Filters"
+
+#: .\shop\templates\shop.html:21
+msgid "Категорії"
+msgstr "Categories"
+
+#: .\shop\templates\shop.html:25
+msgid "Виробники"
+msgstr "Manufacturers"
+
+#: .\shop\templates\shop.html:29
+msgid "Пошук"
+msgstr "Search"
+
+#: .\shop\templates\shop.html:31
+msgid "Фільтрувати"
+msgstr "Filter"
+
+#: .\shop\templates\shop.html:36
+msgid "Наш магазин"
+msgstr "Our Shop"
+
+#: .\shop\templates\shop.html:50
+msgid "Кількість"
+msgstr "Quantity"
+
+#: .\shop\templates\shop.html:52
+msgid "Додати в кошик"
+msgstr "Add to Cart"
+
+#: .\shop\templates\shop.html:56
+msgid "Товари не знайдено."
+msgstr "No products found."
+
+#: .\shop\templates\shop.html:61
+msgid "Корзина"
+msgstr "Cart"
+
+#: .\templates\diet_for_run.html:7
+msgid "Дієта для бігу"
+msgstr "Diet for Running"
+
+#: .\templates\diet_for_run.html:8
+msgid ""
+"Отримайте легкість і свободу, станьте кращим разом із персональним дієтологом"
+msgstr "Achieve lightness and freedom, become better with a personal dietitian"
+
+#: .\templates\diet_for_run.html:9 .\templates\how_its_works.html:13
+#: .\templates\more_info.html:12
+msgid "Обрати дієтолога"
+msgstr "Choose a Dietitian"
+
+#: .\templates\diet_for_run.html:17
+msgid "Проблеми бігу без діети"
+msgstr "Problems of Running Without a Diet"
+
+#: .\templates\diet_for_run.html:21
+msgid "Недостача енергії"
+msgstr "Lack of Energy"
+
+#: .\templates\diet_for_run.html:22 .\templates\diet_for_run.html:32
+msgid "Неправильний раціон – нестача енергії/надмірне навантаження на організм"
+msgstr "Improper Diet – Lack of Energy/Excessive Load on the Body"
+
+#: .\templates\diet_for_run.html:26
+msgid "Порушення метаболізму"
+msgstr "Metabolism Disruption"
+
+#: .\templates\diet_for_run.html:27
+msgid ""
+"Відмова від обіду після тренування – порушення метаболізму, ефективність "
+"тренування 0"
+msgstr ""
+"Skipping lunch after training – metabolism disruption, training "
+"effectiveness 0"
+
+#: .\templates\diet_for_run.html:31
+msgid "При недоїданні"
+msgstr "When Undereating"
+
+#: .\templates\diet_for_run.html:36
+msgid "Надмірна вага"
+msgstr "Excess Weight"
+
+#: .\templates\diet_for_run.html:37
+msgid "Надмірне навантаження на суглоби вашого тіла, коліна"
+msgstr "Excessive Load on Your Body Joints, Knees"
+
+#: .\templates\diet_for_run.html:41
+msgid "Важко бігати"
+msgstr "Hard to Run"
+
+#: .\templates\diet_for_run.html:42
+msgid "При переїданні – біль у печінці, порушення кровотоку"
+msgstr "When Overeating – Pain in the Liver, Blood Flow Disruption"
+
+#: .\templates\diet_for_run.html:46
+msgid "Порушення гідробалансу"
+msgstr "Disruption of Hydrobalance"
+
+#: .\templates\diet_for_run.html:47
+msgid "Ризик запаморочення, порушення роботи серця, загущення крові"
+msgstr "Risk of Dizziness, Heart Function Disruption, Blood Thickening"
+
+#: .\templates\how_its_works.html:8
+msgid "Кращий результат"
+msgstr "Better Result"
+
+#: .\templates\how_its_works.html:9
+msgid "Правильне харчування дійсно працює"
+msgstr "Proper Nutrition Really Works"
+
+#: .\templates\how_its_works.html:11
+msgid ""
+"При неправильному харчуванні спорт може бути шкідливим для здоров'я. І "
+"навпаки – збалансований раціон, розроблений з урахуванням індивідуальних "
+"особливостей людини, допомагає не лише схуднути та отримати чудове тіло, а й "
+"досягти неймовірних результатів у спорті."
+msgstr ""
+"Improper nutrition can make sports harmful to health. Conversely, a balanced "
+"diet, developed with consideration of individual characteristics, helps not "
+"only to lose weight and achieve a great body but also to achieve incredible "
+"results in sports."
+
+#: .\templates\how_its_works.html:20 .\templates\nav.html:13
+msgid "Як це працює?"
+msgstr "How It Works?"
+
+#: .\templates\how_its_works.html:24
+msgid "Огляд вашої ситуації та цілей"
+msgstr "Review of Your Situation and Goals"
+
+#: .\templates\how_its_works.html:28
+msgid ""
+"Ми уважно вивчимо Вашу харчову поведінку, спосіб життя, проблеми зі "
+"здоров'ям та цілі."
+msgstr ""
+"We will carefully examine your eating behavior, lifestyle, health issues, "
+"and goals."
+
+#: .\templates\how_its_works.html:33
+msgid "Складемо план роботи на півроку вперед"
+msgstr "Develop a Plan for the Next Six Months"
+
+#: .\templates\how_its_works.html:40
+msgid "Обери ідеального онлайн дієтолога"
+msgstr "Choose the Perfect Online Dietitian"
+
+#: .\templates\how_its_works.html:44
+msgid ""
+"Оберіть персонального дієтолога зі списку, сформованого на основі Вашої "
+"інформації в кроці 1"
+msgstr ""
+"Choose a personal dietitian from the list based on your information from "
+"step 1"
+
+#: .\templates\how_its_works.html:49
+msgid ""
+"Ви зможете ознайомитись з досвідом, включаючи професійний стаж, освіту, "
+"професійні підходи та відгуки"
+msgstr ""
+"You can review their experience, including professional background, "
+"education, professional approaches, and reviews"
+
+#: .\templates\how_its_works.html:54 .\templates\how_its_works.html:65
+msgid "Ідеальний дієтолог постійно на зв'язку"
+msgstr "The Perfect Dietitian is Always in Touch"
+
+#: .\templates\how_its_works.html:61
+msgid "Отримуйте підтримку та мотивацію"
+msgstr "Receive Support and Motivation"
+
+#: .\templates\how_its_works.html:70
+msgid ""
+"Дієтолог завжди готовий скоригувати ваше меню у випадку, якщо ви відчуваєте "
+"недолік у деяких продуктах харчування або просто потяг до солодкого"
+msgstr ""
+"The dietitian is always ready to adjust your menu if you feel a lack of "
+"certain foods or just a craving for sweets"
+
+#: .\templates\how_its_works.html:81
+msgid "Залежність харчування та спорту"
+msgstr "Nutrition and Sports Dependence"
+
+#: .\templates\how_its_works.html:90
+msgid "Залізо"
+msgstr "Iron"
+
+#: .\templates\how_its_works.html:91
+msgid ""
+"Зумовлює витривалість та працездатність. Нестача заліза – найпоширеніша "
+"проблема серед атлетів"
+msgstr ""
+"Determines endurance and performance. Iron deficiency is the most common "
+"issue among athletes"
+
+#: .\templates\how_its_works.html:99
+msgid "Вітамін В"
+msgstr "Vitamin B"
+
+#: .\templates\how_its_works.html:100
+msgid ""
+"При дефіциті порушується робота серцево-судинного апарату, є ризик серцевого "
+"нападу під час забігу"
+msgstr ""
+"Deficiency disrupts cardiovascular function, with the risk of heart attack "
+"during a run"
+
+#: .\templates\how_its_works.html:108
+msgid "Вітамін D"
+msgstr "Vitamin D"
+
+#: .\templates\how_its_works.html:109
+msgid ""
+"Дефіцит викликає порушення кальцій-фосфорного обміну, звідси – травми та "
+"переломи."
+msgstr ""
+"Deficiency causes disruptions in calcium-phosphorus metabolism, leading to "
+"injuries and fractures."
+
+#: .\templates\how_its_works.html:117
+msgid "Магній"
+msgstr "Magnesium"
+
+#: .\templates\how_its_works.html:118
+msgid "Забезпечує правильну роботу м'язів та поглинання кисню."
+msgstr "Ensures proper muscle function and oxygen absorption."
+
+#: .\templates\index.html:37
+msgid "Чому ми"
+msgstr "Why Us"
+
+#: .\templates\index.html:40
+msgid "Як це працює"
+msgstr "How It Works"
+
+#: .\templates\index.html:43 .\templates\nav.html:18
+msgid "Вартість"
+msgstr "Cost"
+
+#: .\templates\index.html:46 .\templates\nav.html:23
+msgid "Переваги"
+msgstr "Benefits"
+
+#: .\templates\index.html:49 .\templates\more_info.html:39
+#: .\templates\nav.html:28
+msgid "Запитайте нас"
+msgstr "Ask Us"
+
+#: .\templates\more_info.html:6 .\templates\more_info.html:33
+msgid "Eating boy"
+msgstr "Eating Boy"
+
+#: .\templates\more_info.html:8
+msgid "Загальної дієти не існує"
+msgstr "There Is No One-Size-Fits-All Diet"
+
+#: .\templates\more_info.html:10
+msgid ""
+"При заняттях бігом дуже важливо, що, скільки і коли ви їсте. Загальної "
+"дієтинемає – раціон повинен враховувати індивідуальні особливості організму, "
+"швидкість метаболізму, програмутренувань. Дуже важливою є професійна "
+"допомога дієтолога, який розробить для вас спеціальну дієтудля тренувань."
+msgstr ""
+"During running, it is very important what, how much, and when you eat. There "
+"is no universal diet – the diet should take into account the individual "
+"characteristics of the body, the metabolism rate, and the training program. "
+"Professional help from a dietitian is crucial as they will develop a special "
+"diet for your training."
+
+#: .\templates\more_info.html:16
+msgid "Енергія для організму"
+msgstr "Energy for the Body"
+
+#: .\templates\more_info.html:18
+msgid ""
+"Важливо наситити організм перед початком тренування, оптимально "
+"складнимивуглеводами, що дають енергію тривалий час. Інакше ви можете "
+"знепритомніти, травмуватися або навітьвпасти в глікогікемічну кому."
+msgstr ""
+"It is important to fuel the body before starting training, ideally with "
+"complex carbohydrates that provide energy for a long time. Otherwise, you "
+"may faint, get injured, or even fall into a hypoglycemic coma."
+
+#: .\templates\more_info.html:23
+msgid "Небезпека під час тренувань"
+msgstr "Dangers During Training"
+
+#: .\templates\more_info.html:25
+msgid ""
+"Якщо перед тренуванням ви переїли, вже з першими кроками тіло неможе "
+"впоратись з подвійним навантаженням – перетравленням їжі, процесами "
+"метаболізму та власне фізичноюактивністю. Починає боліти в лівому та правому "
+"боках – це печінка та селезінка, які страждають від надмірної роботи."
+msgstr ""
+"If you overeat before training, with the first steps, your body may not be "
+"able to cope with the double load – digestion, metabolism processes, and "
+"physical activity. Pain in the left and right sides – this is the liver and "
+"spleen, which suffer from excessive work."
+
+#: .\templates\more_info.html:35
+msgid "Дізнайтесь більше"
+msgstr "Learn More"
+
+##: .\templates\more_info.html:37
+msgid ""
+"Досі є питання? Ми будемо раді відповісти на них у будь-який зручний для Вас "
+"час."
+msgstr "Still have questions? We will be happy to answer them at any time convenient for you."
+
+
+#: .\templates\nav.html:8
+msgid "Чому ми?"
+msgstr "Why Us?"
+
+#: .\templates\nav.html:39
+msgid "Укр"
+msgstr "Ukr"
+
+#: .\templates\nav.html:40
+msgid "Eng"
+msgstr "Eng"
+
+#: .\templates\nav.html:47 .\templates\nav.html:53
+msgid "Особистий кабінет"
+msgstr "Personal Account"
+
+#: .\templates\nav.html:59
+msgid "Вийти"
+msgstr "Logout"
+
+#: .\templates\our_offers.html:4
+msgid "Обрати персонального онлайн фахівця"
+msgstr "Choose a Personal Online Specialist"
+
+#: .\templates\our_offers.html:5
+msgid "Current language:"
+msgstr "Current Language:"
+
+#: .\templates\our_offers.html:17 .\templates\our_offers.html:19
+msgid "Free Consultation"
+msgstr "Free Consultation"
+
+#: .\templates\our_offers.html:23 .\templates\our_offers.html:25
+msgid "Eating Plan"
+msgstr "Eating Plan"
+
+#: .\templates\our_offers.html:29 .\templates\our_offers.html:31
+msgid "Coaching"
+msgstr "Coaching"
+
+#: .\templates\our_offers.html:35 .\templates\our_offers.html:37
+msgid "Consultation About Sport"
+msgstr "Consultation About Sport"
+
+#: .\templates\our_offers.html:41 .\templates\our_offers.html:43
+msgid "Money-back Guarantee"
+msgstr "Money-back Guarantee"
+
+#: .\templates\our_offers.html:47 .\templates\our_offers.html:49
+msgid "Free Week for Family"
+msgstr "Free Week for Family"
+
+#: .\templates\our_offers.html:52
+msgid "Обрати"
+msgstr "Choose"

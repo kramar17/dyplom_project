@@ -1,6 +1,5 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
@@ -8,16 +7,12 @@ from django.contrib.auth import logout, authenticate, login
 from account.forms import LoginForm, RegisterForm
 from account.models import OfferModel, UserDiscount, DietitianClient
 from djangoProject1.loger import user_logger
+from django.utils.translation import gettext as _
 
 
 class RegisterView(CreateView):
     """
     View for user registration.
-
-    Attributes:
-        template_name (str): Template file path for rendering the registration form.
-        form_class (class): Form class used for user registration.
-        success_url (str): URL to redirect after successful registration.
     """
 
     template_name = 'register.html'
@@ -27,16 +22,30 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         """
         Process the valid form submission.
+        """
+        user = form.save()  # Save the user
+        user_logger.info(f"Створено нового користувача: {user.username}, email: {user.email}")
+
+        # Perform login immediately after registration
+        self.login_user(user, form.cleaned_data['password1'])
+
+        # Redirect to the success URL
+        return redirect(self.success_url)
+
+    def login_user(self, user, password):
+        """
+        Perform login for the given user.
 
         Args:
-            form (Form): Validated form instance.
-
-        Returns:
-            HttpResponse: Redirects to success URL after saving the form.
+            user (User): The user instance.
+            password (str): The password for authentication.
         """
-        user = form.save()  # Зберігаємо користувача
-        user_logger.info(f"Створено нового користувача: {user.username}, email: {user.email}")
-        return super().form_valid(form)
+        user = authenticate(username=user.username, password=password)
+        if user is not None:
+            login(self.request, user)
+            user_logger.info(f"Авторизовано нового користувача: {user.username}, email: {user.email}")
+        else:
+            user_logger.warning(f"Не вдалося авторизувати користувача: {user.username}")
 
 
 class MyLoginView(FormView):
@@ -70,7 +79,7 @@ class MyLoginView(FormView):
             login(self.request, user)
             return super().form_valid(form)
         else:
-            form.add_error(None, 'Невірний логін чи пароль')
+            form.add_error(None, _('Невірний логін чи пароль'))
             return self.form_invalid(form)
 
 
@@ -112,7 +121,7 @@ def profile_view(request):
     else:
         monthly_payment = None
 
-    recommendation = "Поки нема рекомендацій"
+    recommendation = _("Поки нема рекомендацій")
     try:
         dietitian_client = DietitianClient.objects.get(client=user)
         recommendation = dietitian_client.recommendation

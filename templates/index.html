@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-  <title>DIETOLOGONLINE</title>
+  <title>{% trans "DIETOLOGONLINE" %}</title>
 </head>
 <body class="page">
   <div class="overlay"></div>
@@ -18,36 +19,40 @@
       <path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)"/>
     </svg>
   </div>
-<header class="header">
+  <header class="header">
+    {% include 'nav.html' %}
+  </header>
+
+  {% include 'diet_for_run.html' %}
+  {% include 'how_its_works.html' %}
+  {% include 'our_offers.html' %}
+  {% include 'more_info.html' %}
   
-   
-      {% include 'nav.html' %}
-      
-    
-</header>
-    {% include 'diet_for_run.html' %}
-    
-    {% include 'how_its_works.html' %}
- 
-    {% include 'our_offers.html' %}
-  
-    {% include 'more_info.html' %}
-  
-<footer class="footer">
+  <footer class="footer">
     <div class="container footer__container">
-        <a href="/" class="company-name footer__company-name">{{ site_name }}</a>
-        <nav class="menu footer__menu">
-            <ul class="menu__list footer__list">
-                <li class="menu__list-item"><a href="#section-problems" class="menu__link">Чому ми</a></li>
-                <li class="menu__list-item"><a href="#section-describe" class="menu__link">Як це працює</a></li>
-                <li class="menu__list-item"><a href="#section-subscriptions" class="menu__link">Вартість</a></li>
-                <li class="menu__list-item"><a href="#section-eating" class="menu__link">Переваги</a></li>
-                <li class="menu__list-item"><a href="#section-ask" section-class="menu__link">Запитайте нас
-</a></li>
-            </ul>
-        </nav>
+      <a href="/" class="company-name footer__company-name">{{ site_name }}</a>
+      <nav class="menu footer__menu">
+        <ul class="menu__list footer__list">
+          <li class="menu__list-item">
+            <a href="#section-problems" class="menu__link">{% trans "Чому ми" %}</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="#section-describe" class="menu__link">{% trans "Як це працює" %}</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="#section-subscriptions" class="menu__link">{% trans "Вартість" %}</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="#section-eating" class="menu__link">{% trans "Переваги" %}</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="#section-ask" class="menu__link">{% trans "Запитайте нас" %}</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-</footer>
-<script src="{% static 'js/script.js' %}"></script>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

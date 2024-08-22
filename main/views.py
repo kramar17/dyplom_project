@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.utils.translation import gettext as _
 from account.models import OfferModel
 from djangoProject1.loger import logger
 from main.forms import CallBackForm
+from django.utils.translation import get_language
 
 
 def main_page(request):
@@ -15,23 +17,19 @@ def main_page(request):
         HttpResponse: Rendered HTML response.
     """
     offers = OfferModel.objects.filter(is_visible=True).order_by('sort')
-    free_consultation = 'Безкоштовна консультація'
-    eating_plan = 'План харчування розрозблюється з урахуванням ваших уподобань та потреб здоровья'
-    back_up_money = 'Гарантія повернення коштів протягом 5 днів'
-    couching = 'Коучінг: спеціаліст з харчування буде слідкувати за вашим здоров`ям'
-    consultation_about_sport = 'Консультації по спортивному харчуванню'
-    free_week_for_family = 'Безкоштовний тиждень для друга, чи члена вашої сім`ї'
-    warranty_reminder = '*5-днівна гарантія повернення коштів включена в усі плани'
+    current_language = get_language()
 
     context = {
         'offers': offers,
-        'free_consultation': free_consultation,
-        'eating_plan': eating_plan,
-        'back_up_money': back_up_money,
-        'couching': couching,
-        'consultation_about_sport': consultation_about_sport,
-        'free_week_for_family': free_week_for_family,
-        'warranty_reminder': warranty_reminder,
+        'free_consultation': _('Безкоштовна консультація'),
+        'eating_plan': _('План харчування розробляється з урахуванням ваших уподобань та потреб здоров\'я'),
+        'back_up_money': _('Гарантія повернення коштів протягом 5 днів'),
+        'couching': _('Коучінг: спеціаліст з харчування буде слідкувати за вашим здоров\'ям'),
+        'consultation_about_sport': _('Консультації по спортивному харчуванню'),
+        'free_week_for_family': _('Безкоштовний тиждень для друга, чи члена вашої сім\'ї'),
+        'warranty_reminder': _('*5-днівна гарантія повернення коштів включена в усі плани'),
+        'current_language': current_language,
+
     }
 
     return render(request, 'index.html', context)

@@ -2,6 +2,7 @@ import re
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class RegisterForm(forms.ModelForm):
@@ -19,50 +20,49 @@ class RegisterForm(forms.ModelForm):
     """
 
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'}),
-        label='Пароль'
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Пароль')}),
+        label=_('Пароль')
     )
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Підтвердження паролю'}),
-        label='Підтвердження паролю'
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Підтвердження паролю')}),
+        label=_('Підтвердження паролю')
     )
 
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email')
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ім`я користувача'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Прізвище користувача'}),
-            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Мобільний номер'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Ім`я користувача')}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Прізвище користувача')}),
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Мобільний номер')}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Email')}),
         }
         labels = {
-            'first_name': 'Ім`я',
-            'last_name': 'Прізвище',
-            'username': 'Мобільний номер',
-            'email': 'Електронна пошта',
+            'first_name': _('Ім`я'),
+            'last_name': _('Прізвище'),
+            'username': _('Мобільний номер'),
+            'email': _('Електронна пошта'),
         }
         help_texts = {
-            'first_name': 'Обов`язкове поле',
-            'last_name': 'Обов`язкове поле',
-            'username': 'Обов`язкове поле',
-            'email': 'Обов`язкове поле',
+            'first_name': _('Обов`язкове поле'),
+            'last_name': _('Обов`язкове поле'),
+            'username': _('Обов`язкове поле'),
+            'email': _('Обов`язкове поле'),
         }
         error_messages = {
             'first_name': {
-                'required': 'Обов`язкове поле',
+                'required': _('Обов`язкове поле'),
             },
             'last_name': {
-                'required': 'Обов`язкове поле',
+                'required': _('Обов`язкове поле'),
             },
             'username': {
-                'required': 'Обов`язкове поле',
+                'required': _('Обов`язкове поле'),
             },
             'email': {
-                'required': 'Обов`язкове поле',
+                'required': _('Обов`язкове поле'),
             }
         }
-
 
     def clean_username(self):
         """
@@ -78,7 +78,7 @@ class RegisterForm(forms.ModelForm):
 
         username = username.replace(' ', '')
         if not re.match(r'^(\+?380|0)\d{9}$', username):
-            raise ValidationError('Невірний формат номеру телефону.')
+            raise ValidationError(_('Невірний формат номеру телефону.'))
         if username.startswith('+380'):
             username = '0' + username[4:]
         elif username.startswith('380'):
@@ -98,7 +98,7 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError('Паролі не співпадають')
+            raise forms.ValidationError(_('Паролі не співпадають'))
         return password2
 
     def save(self, commit=True):
@@ -130,8 +130,8 @@ class LoginForm(forms.Form):
     """
 
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер телефону'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Номер телефону')})
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'})
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Пароль')})
     )

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-    <title>Оплата успішна</title>
-
+    <title>{% trans "Оплата успішна" %}</title>
 </head>
 <body>
     <div class="nav-container">
         {% include 'nav.html' %}
     </div>
     <div class="message-container">
-        <h2>Оплата успішна. Дякуємо вам!</h2>
-        <a href="{% url 'index' %}">Повернутися на головну</a>
+        <h2>{% trans "Оплата успішна. Дякуємо вам!" %}</h2>
+        <a href="{% url 'index' %}">{% trans "Повернутися на головну" %}</a>
     </div>
 </body>
- <style>
+<style>
         body {
             font-family: Arial, sans-serif;
             margin: 0 auto;

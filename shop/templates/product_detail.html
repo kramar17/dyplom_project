@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -13,22 +13,22 @@
 
     <div class="product-detail">
         <h1>{{ product.name }}</h1>
-        <p>Ціна: {{ product.price }}</p>
-        <p>Опис: {{ product.description }}</p>
+        <p>{% trans "Ціна:" %} {{ product.price }}</p>
+        <p>{% trans "Опис:" %} {{ product.description }}</p>
         {% if product.photo %}
         <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="product-photo">
         {% endif %}
 
         <!-- Середня оцінка товару -->
-        <h3>Середня оцінка: {{ average_rating|default:"Немає оцінок" }}</h3>
+        <h3>{% trans "Середня оцінка:" %} {{ average_rating|default:"{% trans 'Немає оцінок' %}" }}</h3>
 
         <!-- Коментарі та оцінки -->
-        <h3>Відгуки та оцінки</h3>
+        <h3>{% trans "Відгуки та оцінки" %}</h3>
         {% if user.is_authenticated %}
         <form method="post" action="{% url 'add_comment' product.id %}">
             {% csrf_token %}
-            <textarea name="text" rows="5" placeholder="Залиште свій відгук"></textarea><br>
-            <label for="rating">Оцінка:</label>
+            <textarea name="text" rows="5" placeholder="{% trans 'Залиште свій відгук' %}"></textarea><br>
+            <label for="rating">{% trans "Оцінка:" %}</label>
             <select name="rating" id="rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -36,20 +36,20 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select><br>
-            <button type="submit">Залишити відгук</button>
+            <button type="submit">{% trans 'Залишити відгук' %}</button>
         </form>
         {% else %}
-        <p>Будь ласка, <a href="{% url 'login' %}">увійдіть</a>, щоб залишити відгук та оцінку.</p>
+        <p>{% trans "Будь ласка," %} <a href="{% url 'login' %}">{% trans "увійдіть" %}</a>, {% trans "щоб залишити відгук та оцінку." %}</p>
         {% endif %}
 
         <div class="comments">
             {% for comment in product.comments.all %}
             <div class="comment">
                 <p>{{ comment.user.first_name }} {{ comment.user.last_name|first }}.: {{ comment.text }}</p>
-                <p>Оцінка: {{ comment.rating }}</p>
+                <p>{% trans "Оцінка:" %} {{ comment.rating }}</p>
             </div>
             {% empty %}
-            <p>Поки ще немає відгуків на цей товар.</p>
+            <p>{% trans "Поки ще немає відгуків на цей товар." %}</p>
             {% endfor %}
         </div>
     </div>
@@ -64,8 +64,8 @@
     }
     .product-detail img {
       max-width: 100px;
-          max-height: 100px;
-          margin-bottom: 10px;
+      max-height: 100px;
+      margin-bottom: 10px;
     }
     .comments .comment {
       margin-bottom: 10px;
@@ -109,5 +109,5 @@
     .product-detail button:hover {
       background-color: #45a049;
     }
-  </style>
+</style>
 </html>

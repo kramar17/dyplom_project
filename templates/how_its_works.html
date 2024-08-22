@@ -1,61 +1,84 @@
-{% load static %} 
+{% load static %}
+{% load i18n %}
 
-  <section class="section-result" id="section-result">
+<section class="section-result" id="section-result">
   <div class="container container-flex">
     <img class="section-result__img container-flex__img" src="{% static 'images/character-eaating.svg' %}" alt="Eating boy">
     <div class="section-result__info container-flex__info">
-      <h2>Кращий результат</h2>
-      <h3>Правильне харчування дійсно працює</h3>
-      <p class="section-result__text container-flex__text">При неправильному харчуванні спорт може бути шкідливим для 
-          здоров'я. І навпаки – збалансований раціон, розроблений з урахуванням індивідуальних особливостей людини, 
-          допомагає не лише схуднути та отримати чудове тіло, а й досягти неймовірних результатів у спорті.</p>
-      <a href="{% url 'callback' %}" class="btn">Обрати дієтолога</a>
+      <h2>{% trans "Кращий результат" %}</h2>
+      <h3>{% trans "Правильне харчування дійсно працює" %}</h3>
+      <p class="section-result__text container-flex__text">
+        {% trans "При неправильному харчуванні спорт може бути шкідливим для здоров'я. І навпаки – збалансований раціон, розроблений з урахуванням індивідуальних особливостей людини, допомагає не лише схуднути та отримати чудове тіло, а й досягти неймовірних результатів у спорті." %}
+      </p>
+      <a href="{% url 'callback' %}" class="btn">{% trans "Обрати дієтолога" %}</a>
     </div>
   </div>
 </section>
-  <section class="section-describe" id="section-describe">
+
+<section class="section-describe" id="section-describe">
   <div class="container">
-    <h2>Як це працює?</h2>
+    <h2>{% trans "Як це працює?" %}</h2>
     <div class="section-describe__container">
       <div class="section-describe__card">
         <img class="section-describe__img" src="{% static 'images/icons/folder.svg' %}" alt="">
-        <h3>Огляд вашої ситуації та цілей</h3>
+        <h3>{% trans "Огляд вашої ситуації та цілей" %}</h3>
         <ul class="section-describe__list">
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ми уважно вивчимо Вашу 
-              харчову поведінку, спосіб життя, проблеми зі здоров'ям та цілі.</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Складемо план роботи 
-              на півроку вперед</span></li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Ми уважно вивчимо Вашу харчову поведінку, спосіб життя, проблеми зі здоров'ям та цілі." %}
+            </span>
+          </li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Складемо план роботи на півроку вперед" %}
+            </span>
+          </li>
         </ul>
       </div>
       <div class="section-describe__card">
         <img class="section-describe__img" src="{% static 'images/icons/woman.svg' %}" alt="">
-        <h3>Обери ідеального онлайн дієтолога</h3>
+        <h3>{% trans "Обери ідеального онлайн дієтолога" %}</h3>
         <ul class="section-describe__list">
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Оберіть персонального 
-              дієтолога зі списку, сформованого на основі Вашої інформації в кроці 1</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ви зможете ознайомитись
-              з досвідом, включаючи професійний стаж, освіту, професійні підходи та відгуки</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ідеальний дієтолог 
-              постійно на зв'язку</span></li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Оберіть персонального дієтолога зі списку, сформованого на основі Вашої інформації в кроці 1" %}
+            </span>
+          </li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Ви зможете ознайомитись з досвідом, включаючи професійний стаж, освіту, професійні підходи та відгуки" %}
+            </span>
+          </li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Ідеальний дієтолог постійно на зв'язку" %}
+            </span>
+          </li>
         </ul>
       </div>
       <div class="section-describe__card">
         <img class="section-describe__img" src="{% static 'images/icons/lamp-pazzle.svg' %}" alt="">
-        <h3>Отримуйте підтримку та мотивацію</h3>
+        <h3>{% trans "Отримуйте підтримку та мотивацію" %}</h3>
         <ul class="section-describe__list">
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Ідеальний дієтолог 
-              постійно на зв'язку</span></li>
-          <li class="section-describe__list-item"><span class="section-describe__list-item-text">Дієтолог завжди готовий 
-              скоригувати ваше меню у випадку, якщо ви відчуваєте недолік у деяких продуктах харчування або 
-              просто потяг до солодкого</span></li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Ідеальний дієтолог постійно на зв'язку" %}
+            </span>
+          </li>
+          <li class="section-describe__list-item">
+            <span class="section-describe__list-item-text">
+              {% trans "Дієтолог завжди готовий скоригувати ваше меню у випадку, якщо ви відчуваєте недолік у деяких продуктах харчування або просто потяг до солодкого" %}
+            </span>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 </section>
-  <section class="section-dependency" id="section-dependency">
+
+<section class="section-dependency" id="section-dependency">
   <div class="container">
-    <h2>Залежність харчування та спорту</h2>
+    <h2>{% trans "Залежність харчування та спорту" %}</h2>
     <div class="section-dependency__container">
       <img class="section-dependency__img" src="{% static 'images/depencies.svg' %}" alt="">
       <div class="section-dependency__info">
@@ -64,9 +87,8 @@
             Fe
           </div>
           <div class="section-dependency__item-text">
-            <h3>Залізо</h3>
-            <p>Зумовлює витривалість та працездатність. Нестача заліза – найпоширеніша проблема 
-                серед атлетів</p>
+            <h3>{% trans "Залізо" %}</h3>
+            <p>{% trans "Зумовлює витривалість та працездатність. Нестача заліза – найпоширеніша проблема серед атлетів" %}</p>
           </div>
         </div>
         <div class="section-dependency__item">
@@ -74,8 +96,8 @@
             B
           </div>
           <div>
-            <h3>Вітамін В</h3>
-            <p>При дефіциті порушується робота серцево-судинного апарату, є ризик серцевого нападу під час забігу</p>
+            <h3>{% trans "Вітамін В" %}</h3>
+            <p>{% trans "При дефіциті порушується робота серцево-судинного апарату, є ризик серцевого нападу під час забігу" %}</p>
           </div>
         </div>
         <div class="section-dependency__item">
@@ -83,8 +105,8 @@
             D
           </div>
           <div>
-            <h3>Вітамін D</h3>
-            <p>Дефіцит викликає порушення кальцій-фосфорного обміну, звідси – травми та переломи.</p>
+            <h3>{% trans "Вітамін D" %}</h3>
+            <p>{% trans "Дефіцит викликає порушення кальцій-фосфорного обміну, звідси – травми та переломи." %}</p>
           </div>
         </div>
         <div class="section-dependency__item">
@@ -92,8 +114,8 @@
             Mg
           </div>
           <div>
-            <h3>Магній</h3>
-            <p>Забезпечує правильну роботу м'язів та поглинання кисню.</p>
+            <h3>{% trans "Магній" %}</h3>
+            <p>{% trans "Забезпечує правильну роботу м'язів та поглинання кисню." %}</p>
           </div>
         </div>
       </div>

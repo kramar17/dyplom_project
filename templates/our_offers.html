@@ -1,61 +1,59 @@
-
-{% load static %}
- <section class="section-subscriptions" id="section-subscriptions">
+{% load static i18n %}
+<section class="section-subscriptions" id="section-subscriptions">
   <div class="container">
-    <h2>Обрати персонального онлайн фахівця</h2>
+    <h2>{% trans "Обрати персонального онлайн фахівця" %}</h2>
+    <p>{% trans "Current language:" %} {{ current_language }}</p>
     <div class="section-subscriptions__container">
         {% for offer in offers %}
             <div class="subscription">
-        <div class="subscription__header">
-          <span class="subscription__title">{{ offer.name }}</span><br>
-          <span class="subscription__price">{{ offer.price}} UAH</span>
-          <s class="subscription__price-old">{{ offer.old_price}} UAH</s>
-        </div>
-        <div class="subscription__main">
-          <ul class="subscription__offers-list">
-          
-            {% if offer.free_consultation == True %}
-                <li class="subscription__list-item">{{ free_consultation }}</li>
-            {% else %}
-                <li class="subscription__list-item subscription__list-item_not-include">{{ free_consultation }}</li>
-            {% endif %}  
-          
-            {% if offer.eating_plan == True %}
-                <li class="subscription__list-item">{{ eating_plan }}</li>
-            {% else %}
-                <li class="subscription__list-item subscription__list-item_not-include">{{ eating_plan }}</li>
-            {% endif %}
-          
-              {% if offer.couching == True %}
-                <li class="subscription__list-item">{{ couching }}</li>
-            {% else %}
-                <li class="subscription__list-item subscription__list-item_not-include">{{ couching }}</li>
-            {% endif %}  
-          
-              {% if offer.consultation_about_sport == True %}
-                <li class="subscription__list-item">{{ consultation_about_sport }}</li>
-            {% else %}
-                <li class="subscription__list-item subscription__list-item_not-include">{{ consultation_about_sport }}</li>
-            {% endif %}
-          
-              {% if offer.back_up_money == True %}
-                <li class="subscription__list-item">{{ back_up_money }}</li>
-            {% else %}
-                <li class="subscription__list-item subscription__list-item_not-include">{{ back_up_money }}</li>
-            {% endif %} 
-          
-              {% if offer.free_week_for_family == True %}
-                <li class="subscription__list-item">{{ free_week_for_family }}</li>
-            {% else %}
-                <li class="subscription__list-item subscription__list-item_not-include">{{ free_week_for_family }}</li>
-            {% endif %}
-          
-          </ul>
-          <a href="{% url 'callback' %}" class="btn">Выбрать</a>
-        </div>
-      </div>
+                <div class="subscription__header">
+                    <span class="subscription__title">{{ offer.name }}</span><br>
+                    <span class="subscription__price">{{ offer.price}} UAH</span>
+                    <s class="subscription__price-old">{{ offer.old_price}} UAH</s>
+                </div>
+                <div class="subscription__main">
+                    <ul class="subscription__offers-list">
+                        {% if offer.free_consultation == True %}
+                            <li class="subscription__list-item">{% trans "Free Consultation" %}</li>
+                        {% else %}
+                            <li class="subscription__list-item subscription__list-item_not-include">{% trans "Free Consultation" %}</li>
+                        {% endif %}  
+                      
+                        {% if offer.eating_plan == True %}
+                            <li class="subscription__list-item">{% trans "Eating Plan" %}</li>
+                        {% else %}
+                            <li class="subscription__list-item subscription__list-item_not-include">{% trans "Eating Plan" %}</li>
+                        {% endif %}
+                      
+                        {% if offer.couching == True %}
+                            <li class="subscription__list-item">{% trans "Coaching" %}</li>
+                        {% else %}
+                            <li class="subscription__list-item subscription__list-item_not-include">{% trans "Coaching" %}</li>
+                        {% endif %}  
+                      
+                        {% if offer.consultation_about_sport == True %}
+                            <li class="subscription__list-item">{% trans "Consultation About Sport" %}</li>
+                        {% else %}
+                            <li class="subscription__list-item subscription__list-item_not-include">{% trans "Consultation About Sport" %}</li>
+                        {% endif %}
+                      
+                        {% if offer.back_up_money == True %}
+                            <li class="subscription__list-item">{% trans "Money-back Guarantee" %}</li>
+                        {% else %}
+                            <li class="subscription__list-item subscription__list-item_not-include">{% trans "Money-back Guarantee" %}</li>
+                        {% endif %} 
+                      
+                        {% if offer.free_week_for_family == True %}
+                            <li class="subscription__list-item">{% trans "Free Week for Family" %}</li>
+                        {% else %}
+                            <li class="subscription__list-item subscription__list-item_not-include">{% trans "Free Week for Family" %}</li>
+                        {% endif %}
+                    </ul>
+                    <a href="{% url 'callback' %}" class="btn">{% trans "Обрати" %}</a>
+                </div>
+            </div>
         {% endfor %}
     </div>
-    <p class="section-subscription__garantee">{{ warranty_reminder }}</p>
+    <p class="section-subscription__garantee">{% trans warranty_reminder %}</p>
   </div>
 </section>

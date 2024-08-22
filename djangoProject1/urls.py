@@ -7,6 +7,7 @@ from account.views import (RegisterView, MyLoginView, logout_view, profile_view,
                            client_profile_view)
 from shop.views import (OurShopView, AddToCartView, CartView, PaymentView, PaymentSuccessView,
                         PaymentIsSuccessView, UpdateCartView, ProductDetailView, add_comment)
+from django.conf.urls.i18n import set_language
 
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
     path('our_shop/update_cart/', UpdateCartView.as_view(), name='update_cart'),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
     path('product/<int:pk>/add_comment/', add_comment, name='add_comment'),
+    path('i18n/setlang/', set_language, name='set_language'),
 
 ]
 

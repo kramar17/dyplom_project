@@ -1,40 +1,42 @@
 {% load static %}
+{% load i18n %}
 
-  <section class="section-eating" id="section-eating">
+<section class="section-eating" id="section-eating">
     <div class="container section-eating__container">
-<img class="section-eating__img" src="{% static 'images/icons/Healthy-lifestyle-cuate-1.svg' %}" alt="Eating boy">
+        <img class="section-eating__img" src="{% static 'images/icons/Healthy-lifestyle-cuate-1.svg' %}" alt="{% trans "Eating boy" %}">
         <div class="section-eating__info">
-            <h2 class="section-eating__title">Загальної дієти не існує</h2>
-            <p class="section-eating__text">При заняттях бігом дуже важливо, що, скільки і коли ви їсте. Загальної дієти
-                немає – раціон повинен враховувати індивідуальні особливості організму, швидкість метаболізму, програму 
-                тренувань. Дуже важливою є професійна допомога дієтолога, який розробить для вас спеціальну дієту.
-                для тренувань.</p>
-            <a href="{% url 'callback' %}" class="section-eating__btn">Обрати дієтолога</a>
+            <h2 class="section-eating__title">{% trans "Загальної дієти не існує" %}</h2>
+            <p class="section-eating__text">
+                {% trans "При заняттях бігом дуже важливо, що, скільки і коли ви їсте. Загальної дієтинемає – раціон повинен враховувати індивідуальні особливості організму, швидкість метаболізму, програмутренувань. Дуже важливою є професійна допомога дієтолога, який розробить для вас спеціальну дієтудля тренувань." %}
+            </p>
+            <a href="{% url 'callback' %}" class="section-eating__btn">{% trans "Обрати дієтолога" %}</a>
         </div>
         <div class="section-eating__card">
             <img class="section-eating__card-img" src="{% static 'images/icons/energy.svg' %}" alt="">
-            <h3 class="section-eating__card-title">Енергія для організму</h3>
-            <p class="section-eating__card-text">Важливо наситити організм перед початком тренування, оптимально складними
-                вуглеводами, що дають енергію тривалий час. Інакше ви можете знепритомніти, травмуватися або навіть
-                впасти в глікогікемічну кому.</p>
+            <h3 class="section-eating__card-title">{% trans "Енергія для організму" %}</h3>
+            <p class="section-eating__card-text">
+                {% trans "Важливо наситити організм перед початком тренування, оптимально складнимивуглеводами, що дають енергію тривалий час. Інакше ви можете знепритомніти, травмуватися або навітьвпасти в глікогікемічну кому." %}
+            </p>
         </div>
         <div class="section-eating__card">
             <img class="section-eating__card-img" src="{% static 'images/icons/danger.svg' %}" alt="">
-            <h3 class="section-eating__card-title">Небезпека під час тренувань</h3>
-            <p class="section-eating__card-text">Якщо перед тренуванням ви переїли, вже з першими кроками тіло не 
-                може впоратись з подвійним навантаженням – перетравленням їжі, процесами метаболізму та власне фізичною 
-                активністю. Починає боліти в лівому та правому боках – це печінка та селезінка, які страждають від надмірної роботи.</p>
+            <h3 class="section-eating__card-title">{% trans "Небезпека під час тренувань" %}</h3>
+            <p class="section-eating__card-text">
+                {% trans "Якщо перед тренуванням ви переїли, вже з першими кроками тіло неможе впоратись з подвійним навантаженням – перетравленням їжі, процесами метаболізму та власне фізичноюактивністю. Починає боліти в лівому та правому боках – це печінка та селезінка, які страждають від надмірної роботи." %}
+            </p>
         </div>
     </div>
 </section>
-  <section class="section-ask" id="section-ask">
+
+<section class="section-ask" id="section-ask">
     <div class="container container-flex">
-        <img class="section-ask__img container-flex__img" src="{% static 'images/character-with-phone.svg' %}" alt="Eating boy">
+        <img class="section-ask__img container-flex__img" src="{% static 'images/character-with-phone.svg' %}" alt="{% trans "Eating boy" %}">
         <div class="section-ask__info container-flex__info">
-            <h2>Дізнайтесь більше</h2>
-            <p class="section-result__text container-flex__text">Досі є питання? Ми будемо раді відповісти на них у 
-                будь-який зручний для Вас час.</p>
-            <a href="{% url 'callback' %}" class="btn">Запитайте нас</a>
+            <h2>{% trans "Дізнайтесь більше" %}</h2>
+            <p class="section-result__text container-flex__text">
+                {% trans "Досі є питання? Ми будемо раді відповісти на них у будь-який зручний для Вас час." %}
+            </p>
+            <a href="{% url 'callback' %}" class="btn">{% trans "Запитайте нас" %}</a>
         </div>
     </div>
 </section>

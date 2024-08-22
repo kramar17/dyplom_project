@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-  <title>DIETOLOGONLINE - Профіль</title>
+  <title>{% trans "DIETOLOGONLINE - Профіль" %}</title>
 </head>
 <body class="page">
   <header class="header">
@@ -22,29 +23,30 @@
   </header>
 
   <div class="container profile-container">
-    <h1>Профіль користувача</h1>
-    <p>Імя`я: {{ client.client.first_name }}</p>
-    <p>Призвище: {{ client.client.last_name }}</p>
-    <p>Email: {{ client.client.email }}</p>
-    <p>Телефон: {{ client.client.username }}</p>
+    <h1>{% trans "Профіль користувача" %}</h1>
+    <p>{% trans "Ім'я:" %} {{ client.client.first_name }}</p>
+    <p>{% trans "Призвище:" %} {{ client.client.last_name }}</p>
+    <p>{% trans "Email:" %} {{ client.client.email }}</p>
+    <p>{% trans "Телефон:" %} {{ client.client.username }}</p>
 
-    <h2>Рекомендація:</h2>
+    <h2>{% trans "Рекомендація:" %}</h2>
     <form method="post" class="centered-form">
       {% csrf_token %}
 
-      <textarea name="recommendation" class="form-input" placeholder="Уведіть рекомендацію">
+      <textarea name="recommendation" class="form-input" placeholder="{% trans "Уведіть рекомендацію" %}">
         {% if client.recommendation %}
             {{ client.recommendation }}
         {% endif %}
       </textarea>
-      <button type="submit" class="form-button">Зберегти</button>
+      <button type="submit" class="form-button">{% trans "Зберегти" %}</button>
     </form>
   </div>
-<footer>
-        <div class="footer-container">
-            <p>{{ footer_text }}</p>
-        </div>
-    </footer>
+
+  <footer>
+    <div class="footer-container">
+        <p>{{ footer_text }}</p>
+    </div>
+  </footer>
 </body>
 </html>
 
@@ -82,6 +84,7 @@
 .form-button:hover {
   background-color: #0056b3;
 }
+
 footer {
     text-align: center;
     padding: 20px 0;

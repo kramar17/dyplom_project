@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-  <title>DIETOLOGONLINE - Магазин</title>
+  <title>{% trans "DIETOLOGONLINE - Магазин" %}</title>
 </head>
 <body>
     <!-- Включення загальної навігаційної панелі -->
@@ -15,31 +15,31 @@
 
     <main>
         <div class="filters">
-            <h3>Фільтри</h3>
+            <h3>{% trans "Фільтри" %}</h3>
             <!-- Форма для фільтрації за категоріями та виробниками -->
             <form method="GET" action="">
-                <h4>Категорії:</h4>
+                <h4>{% trans "Категорії" %}:</h4>
                 {% for category in categories %}
                 <label><input type="checkbox" name="categories" value="{{ category.id }}" {% if category.id in selected_categories %}checked{% endif %}> {{ category.name }}</label><br>
                 {% endfor %}
-                <h4>Виробники:</h4>
+                <h4>{% trans "Виробники" %}:</h4>
                 {% for manufacturer in manufacturers %}
                 <label><input type="checkbox" name="manufacturers" value="{{ manufacturer.id }}" {% if manufacturer.id in selected_manufacturers %}checked{% endif %}> {{ manufacturer.name }}</label><br>
                 {% endfor %}
-                <h4>Пошук:</h4>
+                <h4>{% trans "Пошук" %}:</h4>
                 <input type="text" name="search" value="{{ search_query }}">
-                <button type="submit">Фільтрувати</button>
+                <button type="submit">{% trans "Фільтрувати" %}</button>
             </form>
         </div>
 
         <div class="products">
-            <h1>Наш магазин</h1>
+            <h1>{% trans "Наш магазин" %}</h1>
             <!-- Список продуктів -->
             {% for product in products %}
             <div class="product">
                 <h2><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h2>
-                <p>Ціна: {{ product.price }}</p>
-                <p>Опис: {{ product.description }}</p>
+                <p>{% trans "Ціна" %}: {{ product.price }}</p>
+                <p>{% trans "Опис" %}: {{ product.description }}</p>
                 <!-- Можливе додавання зображення продукту -->
                 {% if product.photo %}
                 <img src="{{ product.photo.url }}" alt="{{ product.name }}">
@@ -47,18 +47,18 @@
                 <!-- Форма для додавання товару до кошика з полем кількості -->
                 <form method="post" action="{% url 'add_to_cart' product.id %}" id="add_to_cart_form_{{ product.id }}">
                     {% csrf_token %}
-                    <label for="quantity_{{ product.id }}">Кількість:</label>
+                    <label for="quantity_{{ product.id }}">{% trans "Кількість" %}:</label>
                     <input type="number" id="quantity_{{ product.id }}" name="quantity" min="1" value="1">
-                    <button type="submit">Додати в кошик</button>
+                    <button type="submit">{% trans "Додати в кошик" %}</button>
                 </form>
             </div>
             {% empty %}
-            <p>Товари не знайдено.</p>
+            <p>{% trans "Товари не знайдено." %}</p>
             {% endfor %}
         </div>
 
         <div class="cart-button">
-            <a href="{% url 'cart' %}" class="cart-link">Корзина</a>
+            <a href="{% url 'cart' %}" class="cart-link">{% trans "Корзина" %}</a>
         </div>
     </main>
 

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-  <title>DIETOLOGONLINE - Кошик</title>
+  <title>{% trans "DIETOLOGONLINE - Кошик" %}</title>
 </head>
 <body>
     <!-- Включення загальної навігаційної панелі -->
@@ -15,14 +15,14 @@
 
     <main>
         <div class="products">
-            <h1>Кошик</h1>
+            <h1>{% trans "Кошик" %}</h1>
             <!-- Список товарів у кошику -->
             {% if cart_items %}
                 {% for item in cart_items %}
                     <div class="product">
                         <h2>{{ item.product.name }}</h2>
-                        <p>Ціна: {{ item.product.price }}</p>
-                        <p>Опис: {{ item.product.description }}</p>
+                        <p>{% trans "Ціна" %}: {{ item.product.price }}</p>
+                        <p>{% trans "Опис" %}: {{ item.product.description }}</p>
                         <!-- Зображення товару -->
                         {% if item.product.photo %}
                             <img src="{{ item.product.photo.url }}" alt="{{ item.product.name }}">
@@ -34,7 +34,7 @@
                                 <input type="hidden" name="product_id" value="{{ item.product.id }}">
                                 <button type="submit" name="decrease_quantity" class="quantity-button decrease">-</button>
                             </form>
-                            <span>у кошику {{ item.quantity }} шт</span>
+                            <span>{% trans "у кошику" %} {{ item.quantity }} {% trans "шт" %}</span>
                             <!-- Форма для збільшення кількості товару -->
                             <form method="post" action="{% url 'update_cart' %}" class="quantity-form">
                                 {% csrf_token %}
@@ -45,22 +45,22 @@
                             <form method="post" action="{% url 'update_cart' %}" class="quantity-form">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ item.product.id }}">
-                                <button type="submit" name="remove_item" class="quantity-button remove">Видалити</button>
+                                <button type="submit" name="remove_item" class="quantity-button remove">{% trans "Видалити" %}</button>
                             </form>
                         </div>
                     </div>
                 {% endfor %}
                 <!-- Загальна вартість товарів у кошику -->
                 <div class="total">
-                    <h3>Загальна вартість: {{ total_price }}</h3>
+                    <h3>{% trans "Загальна вартість" %}: {{ total_price }}</h3>
                 </div>
                 <!-- Кнопка перейти до оплати -->
                 <form method="post" action="{% url 'payment' %}">
                     {% csrf_token %}
-                    <button type="submit" class="pay-button">Перейти до оплати</button>
+                    <button type="submit" class="pay-button">{% trans "Перейти до оплати" %}</button>
                 </form>
             {% else %}
-                <p>Ваш кошик порожній.</p>
+                <p>{% trans "Ваш кошик порожній." %}</p>
             {% endif %}
         </div>
     </main>

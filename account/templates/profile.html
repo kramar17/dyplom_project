@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
-  <title>DIETOLOGONLINE - Профіль</title>
+  <title>{% trans "DIETOLOGONLINE - Профіль" %}</title>
 </head>
 <body class="page">
   <header class="header">
@@ -22,37 +23,37 @@
   </header>
 
   <div class="container profile-container">
-    <h1>Профіль користувача</h1>
-    <p>Ім`я: {{ user.first_name }}</p>
-    <p>Призвище: {{ user.last_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Телефон: {{ user.username }}</p>
+    <h1>{% trans "Профіль користувача" %}</h1>
+    <p>{% trans "Ім'я" %}: {{ user.first_name }}</p>
+    <p>{% trans "Призвище" %}: {{ user.last_name }}</p>
+    <p>{% trans "Email" %}: {{ user.email }}</p>
+    <p>{% trans "Телефон" %}: {{ user.username }}</p>
     {% if user.userdiscount %}
-      <p>Ваша знижка: {{ user.userdiscount.discount.name }} ({{ user.userdiscount.discount.percentage }}%)</p>
+      <p>{% trans "Ваша знижка" %}: {{ user.userdiscount.discount.name }} ({{ user.userdiscount.discount.percentage }}%)</p>
     {% else %}
-      <p>У вас немає знижки</p>
-      <p>Приводьте друзів, щоб отримати знижку</p>
+      <p>{% trans "У вас немає знижки" %}</p>
+      <p>{% trans "Приводьте друзів, щоб отримати знижку" %}</p>
     {% endif %}
-    <h2>Тарифи:</h2>
+    <h2>{% trans "Тарифи" %}:</h2>
     <ul>
       {% for offer in offers %}
         <li>{{ offer.name }}:
           {% if monthly_payment %}
             {% if user.userdiscount %}
-              {{ offer.discounted_price }} грн (зі знижкою)
+              {{ offer.discounted_price }} {% trans "грн (зі знижкою)" %}
             {% else %}
-              {{ offer.price }} грн
+              {{ offer.price }} {% trans "грн" %}
             {% endif %}
           {% else %}
-            {{ offer.price }} грн
+            {{ offer.price }} {% trans "грн" %}
           {% endif %}
         </li>
       {% endfor %}
     </ul>
     {% if not monthly_payment %}
-      <p>Приводьте друзів, щоб отримати знижку</p>
+      <p>{% trans "Приводьте друзів, щоб отримати знижку" %}</p>
     {% endif %}
-    <h2>Рекомендація:</h2>
+    <h2>{% trans "Рекомендація" %}:</h2>
     <p>{{ recommendation }}</p>
   </div>
 
@@ -65,6 +66,7 @@
   <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
+
 <style>
    footer {
         text-align: center;

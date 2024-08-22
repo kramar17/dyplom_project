@@ -1,47 +1,50 @@
-{% load static %}  
+{% load static %}
+{% load i18n %}
+
 <section class="section-offer" id="section-offer">
   <div class="container section-offer__container">
     <div class="section-offer__info">
-      <h1 class="section-offer__title">Дієта для бігу</h1>
-      <p class="section-offer__text">Отримайте легкість і свободу, станьте кращим разом із персональним дієтологом</p>
-      <a href="{% url 'callback' %}" class="btn section-offer__btn">Обрати дієтолога</a>
+      <h1 class="section-offer__title">{% trans "Дієта для бігу" %}</h1>
+      <p class="section-offer__text">{% trans "Отримайте легкість і свободу, станьте кращим разом із персональним дієтологом" %}</p>
+      <a href="{% url 'callback' %}" class="btn section-offer__btn">{% trans "Обрати дієтолога" %}</a>
     </div>
     <img class="section-offer__img" src="{% static 'images/character.svg' %}" alt="Running girl">
   </div>
- </section>
-  <section class="section-problems" id="section-problems">
+</section>
+
+<section class="section-problems" id="section-problems">
   <div class="container">
-    <h2 class="section-problems__title">Проблеми бігу без діети</h2>
+    <h2 class="section-problems__title">{% trans "Проблеми бігу без діети" %}</h2>
     <div class="section-problems__cards">
       <div class="section-problems__card problem-card">
         <img class="problem-card__img" src="{% static 'images/icons/lamp.svg' %}" alt="">
-        <h3 class="problem-card__title">Недостача енергії</h3>
-        <p class="problem-card__text">Неправильний раціон – нестача енергії/надмірне навантаження на організм</p>
+        <h3 class="problem-card__title">{% trans "Недостача енергії" %}</h3>
+        <p class="problem-card__text">{% trans "Неправильний раціон – нестача енергії/надмірне навантаження на організм" %}</p>
       </div>
       <div class="section-problems__card problem-card">
         <img class="problem-card__img" src="{% static 'images/icons/danger.svg' %}" alt="">
-        <h3 class="problem-card__title">Порушення метаболізму</h3>
-        <p class="problem-card__text">Відмова від обіду після тренування – порушення метаболізму, ефективність тренування 0</p>
+        <h3 class="problem-card__title">{% trans "Порушення метаболізму" %}</h3>
+        <p class="problem-card__text">{% trans "Відмова від обіду після тренування – порушення метаболізму, ефективність тренування 0" %}</p>
       </div>
       <div class="section-problems__card problem-card">
         <img class="problem-card__img" src="{% static 'images/icons/neural.svg' %}" alt="">
-        <h3 class="problem-card__title">При недоїданні</h3>
-        <p class="problem-card__text">Неправильний раціон – нестача енергії/надмірне навантаження на організм</p>
+        <h3 class="problem-card__title">{% trans "При недоїданні" %}</h3>
+        <p class="problem-card__text">{% trans "Неправильний раціон – нестача енергії/надмірне навантаження на організм" %}</p>
       </div>
       <div class="section-problems__card problem-card">
         <img class="problem-card__img" src="{% static 'images/icons/scales2.svg' %}" alt="">
-        <h3 class="problem-card__title">Надмірна вага</h3>
-        <p class="problem-card__text">Надмірне навантаження на суглоби вашого тіла, коліна</p>
+        <h3 class="problem-card__title">{% trans "Надмірна вага" %}</h3>
+        <p class="problem-card__text">{% trans "Надмірне навантаження на суглоби вашого тіла, коліна" %}</p>
       </div>
       <div class="section-problems__card problem-card">
         <img class="problem-card__img" src="{% static 'images/icons/cake.svg' %}" alt="">
-        <h3 class="problem-card__title">Важко бігати</h3>
-        <p class="problem-card__text">При переїданні – біль у печінці, порушення кровотоку</p>
+        <h3 class="problem-card__title">{% trans "Важко бігати" %}</h3>
+        <p class="problem-card__text">{% trans "При переїданні – біль у печінці, порушення кровотоку" %}</p>
       </div>
       <div class="section-problems__card problem-card">
         <img class="problem-card__img" src="{% static 'images/icons/heart.svg' %}" alt="">
-        <h3 class="problem-card__title">Порушення гідробалансу</h3>
-        <p class="problem-card__text">Ризик запаморочення, порушення роботи серця, загущення крові</p>
+        <h3 class="problem-card__title">{% trans "Порушення гідробалансу" %}</h3>
+        <p class="problem-card__text">{% trans "Ризик запаморочення, порушення роботи серця, загущення крові" %}</p>
       </div>
     </div>
   </div>
